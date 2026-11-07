@@ -1,0 +1,2312 @@
+<!doctype html>
+<html lang="ko" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Re.material | 라이프스타일 머티리얼 UX 라이터</title>
+    <meta
+      name="description"
+      content="첨단 소재의 공학적 데이터를 소비자의 심장을 뛰게 하는 언어로 번역합니다. 라이프스타일 머티리얼 UX 라이터 비즈니스 모델 및 무료 Before & After 1장 번역 리포트."
+    />
+    <meta property="og:title" content="Re.material | 라이프스타일 머티리얼 UX 라이터" />
+    <meta
+      property="og:description"
+      content="첨단 소재의 공학적 데이터를 소비자의 심장을 뛰게 하는 언어로 번역합니다."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts: Cormorant Garamond, Noto Serif KR, Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Noto+Serif+KR:wght@300;400;500;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['"Cormorant Garamond"', '"Noto Serif KR"', 'Georgia', 'serif'],
+              sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            },
+            colors: {
+              cream: '#FAF7F2',
+              sand: '#F4F0E8',
+              warmCard: '#F2EDE2',
+              forest: {
+                DEFAULT: '#272D20',
+                dark: '#1C2117',
+              },
+              sage: {
+                soft: '#D5DCBA',
+                DEFAULT: '#B9BFA0',
+                dark: '#7A855D',
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      body {
+        background-color: #FAF7F2;
+        color: #21251E;
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+      .break-keep {
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+      .font-serif-luxury {
+        font-family: 'Cormorant Garamond', 'Noto Serif KR', Georgia, serif;
+      }
+      .font-serif-kr {
+        font-family: 'Noto Serif KR', 'Cormorant Garamond', Georgia, serif;
+      }
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #FAF7F2;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #D5D9C4;
+        border-radius: 9999px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #B6BC9F;
+      }
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        #print-report-container, #print-report-container * {
+          visibility: visible;
+        }
+        #print-report-container {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          margin: 0;
+          padding: 20px;
+          background: white !important;
+          color: black !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="selection:bg-[#CCD5AD] selection:text-[#1F2417]">
+    <!-- Top Banner Ticker -->
+    <div class="bg-[#EFE7D2] text-[#4A4738] text-xs sm:text-sm py-2 px-4 text-center tracking-wide font-medium border-b border-[#E3DAC2]">
+      <div class="max-w-7xl mx-auto flex items-center justify-center gap-2">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#7D8859] animate-pulse"></span>
+        <span>충남대학교 산학협력단 & 대덕특구 신소재 스타트업을 위한</span>
+        <strong class="font-semibold text-[#2C291F]">[1장 Before & After 번역 리포트]</strong>
+        <span>무료 지원 접수 중</span>
+        <button
+          onclick="openReportModal('apply')"
+          class="underline hover:text-black font-semibold ml-1 inline-flex items-center gap-0.5 cursor-pointer transition-colors"
+        >
+          지금 신청하기 <i data-lucide="arrow-up-right" class="w-3 h-3 inline"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-40 bg-[#FAF7F2]/90 backdrop-blur-md border-b border-[#EAE3D2]/70 transition-all">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+        <!-- Left: Menu button & Nav -->
+        <div class="flex items-center gap-6">
+          <button
+            onclick="toggleMobileMenu()"
+            class="lg:hidden p-2 rounded-lg text-[#2A2E23] hover:bg-[#F0EBE1] transition-colors"
+            aria-label="메뉴 열기"
+          >
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+          <nav class="hidden lg:flex items-center gap-7 text-[13px] tracking-wider uppercase font-medium text-[#484E3F]">
+            <a href="#about" class="hover:text-[#181B14] transition-colors">서비스 개요</a>
+            <a href="#cases" class="hover:text-[#181B14] transition-colors">소재 번역 사례</a>
+            <a href="#concepts" class="hover:text-[#181B14] transition-colors">3대 번역 컨셉</a>
+            <a href="#translator" class="hover:text-[#181B14] transition-colors flex items-center gap-1.5 text-[#5F6946] font-semibold">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> 즉석 번역기
+            </a>
+            <a href="#roadmap" class="hover:text-[#181B14] transition-colors">대전 정주 로드맵</a>
+            <a href="#business" class="hover:text-[#181B14] transition-colors">수익 모델 & 패키지</a>
+          </nav>
+        </div>
+
+        <!-- Center Brand Identity (Re.vert aesthetic) -->
+        <a href="#" class="absolute left-1/2 -translate-x-1/2 text-center select-none">
+          <div class="font-serif-luxury text-2xl sm:text-3xl font-normal tracking-tight text-[#22261D]">
+            Re<span class="italic text-[#7F8B60]">.</span>material
+          </div>
+          <div class="text-[9px] tracking-[0.22em] uppercase text-[#737A66] font-medium -mt-0.5">
+            Material UX Writer
+          </div>
+        </a>
+
+        <!-- Right Action buttons -->
+        <div class="flex items-center gap-3">
+          <button
+            onclick="openReportModal('preview')"
+            class="hidden sm:inline-flex items-center gap-1.5 text-xs tracking-wider uppercase font-medium text-[#383E30] hover:text-[#181B14] px-3 py-1.5 transition-colors cursor-pointer"
+          >
+            <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+            샘플 미리보기
+          </button>
+          <button
+            onclick="openReportModal('apply')"
+            class="bg-[#262B20] hover:bg-[#151812] text-[#FAF7F2] text-xs tracking-wider uppercase px-4 sm:px-5 py-2.5 rounded-full font-medium transition-all shadow-sm hover:shadow hover:scale-[1.02] cursor-pointer flex items-center gap-1.5"
+          >
+            <span>무료 리포트 신청</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile dropdown -->
+      <div id="mobile-menu" class="hidden lg:hidden border-t border-[#EAE3D2] bg-[#FAF7F2] px-6 py-5 space-y-4 shadow-xl">
+        <div class="text-xs uppercase tracking-widest text-[#848B77] font-semibold mb-2">Navigation</div>
+        <div class="flex flex-col space-y-3 text-sm font-medium text-[#2E3326]">
+          <a href="#about" onclick="toggleMobileMenu()" class="text-left py-1 hover:text-[#7D8859]">1. 서비스 개요 (Value Proposition)</a>
+          <a href="#cases" onclick="toggleMobileMenu()" class="text-left py-1 hover:text-[#7D8859]">2. 소재 번역 사례 (Before & After)</a>
+          <a href="#concepts" onclick="toggleMobileMenu()" class="text-left py-1 hover:text-[#7D8859]">3. 3대 번역 컨셉 (감성·효능·친환경)</a>
+          <a href="#translator" onclick="toggleMobileMenu()" class="text-left py-1 text-[#5F6946] font-semibold flex items-center gap-1.5">
+            <i data-lucide="sparkles" class="w-4 h-4"></i> 4. 즉석 번역기 시뮬레이터
+          </a>
+          <a href="#roadmap" onclick="toggleMobileMenu()" class="text-left py-1 hover:text-[#7D8859]">5. 대전 정주 & 대덕특구 로드맵</a>
+          <a href="#business" onclick="toggleMobileMenu()" class="text-left py-1 hover:text-[#7D8859]">6. 비즈니스 모델 & 수익화 전략</a>
+        </div>
+        <div class="pt-3 border-t border-[#EAE3D2]">
+          <button
+            onclick="openReportModal('apply'); toggleMobileMenu();"
+            class="w-full bg-[#262B20] text-[#FAF7F2] py-2.5 rounded-full text-center text-xs tracking-wider uppercase font-medium"
+          >
+            무료 1장 Before & After 리포트 신청
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section (Re.vert aesthetic) -->
+      <section class="relative overflow-hidden bg-[#FAF7F2] pt-6 pb-20 lg:pt-12 lg:pb-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="relative rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden min-h-[580px] sm:min-h-[640px] lg:min-h-[700px] flex flex-col justify-between p-6 sm:p-12 lg:p-16 border border-[#EAE3D4] shadow-sm">
+            <div class="absolute inset-0 z-0">
+              <img
+                src="https://images.unsplash.com/photo-1608248597359-548483b63298?auto=format&fit=crop&w=2000&q=85"
+                alt="Natural sustainable lifestyle materials and soaps"
+                class="w-full h-full object-cover object-center filter brightness-[0.88] saturate-[0.85] contrast-[0.95]"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#1F231B]/85 via-[#23271D]/45 to-[#24291E]/30 mix-blend-multiply"></div>
+              <div class="absolute inset-0 bg-gradient-to-b from-[#2A2F22]/30 via-transparent to-[#191D15]/80"></div>
+            </div>
+
+            <!-- Top Tag -->
+            <div class="relative z-10 flex flex-wrap items-center justify-between gap-3 text-xs tracking-widest uppercase text-[#E7E2D2]">
+              <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/30 backdrop-blur-md border border-white/20">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#B2BC94]"></span>
+                라이프스타일 머티리얼 UX 라이터
+              </span>
+              <span class="hidden md:inline-flex items-center gap-1.5 text-[#D1CBBA] tracking-wider text-[11px]">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#B2BC94]"></i>
+                충남대학교 산학협력단 · 대덕특구 공식 제휴 테스트
+              </span>
+            </div>
+
+            <!-- Central Serif Typography -->
+            <div class="relative z-10 text-center my-auto py-8 sm:py-12 max-w-4xl mx-auto">
+              <div class="inline-block mb-3">
+                <span class="text-xs sm:text-sm font-medium tracking-[0.28em] uppercase text-[#E5DFCE] px-4 py-1 border-b border-[#E5DFCE]/40">
+                  Technology × Content Fusion
+                </span>
+              </div>
+
+              <h1 class="font-serif-luxury text-4xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-normal tracking-tight text-[#FAF7F2] leading-[1.08] drop-shadow-sm mb-6 break-keep text-balance">
+                <span class="inline-block">첨단 소재의 공학적 데이터를</span> <br class="hidden sm:inline" />
+                <span class="inline-block"><span class="italic font-light text-[#E4ECC5]">소비자의 심장</span>을 뛰게 하는 언어로</span>
+              </h1>
+
+              <p class="text-sm sm:text-base lg:text-lg text-[#E3DFD5] max-w-2xl mx-auto font-light leading-relaxed mb-8 sm:mb-10 break-keep text-balance">
+                <span class="inline-block">화장품, 의류, 일상용품에 적용된</span> <span class="inline-block">훌륭한 고분자/신소재 기술이</span>
+                <span class="inline-block">‘어려운 화학식과 스펙 시트’ 때문에</span> <span class="inline-block">외면받지 않도록—</span>
+                <span class="inline-block"><strong class="font-medium text-white">직관적이고 매력적인 제품 경험(UX) 스토리텔링</strong>으로</span> <span class="inline-block">탈바꿈시킵니다.</span>
+              </p>
+
+              <!-- Pill Buttons -->
+              <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button
+                  onclick="openReportModal('apply')"
+                  class="w-full sm:w-auto bg-[#FAF7F2] hover:bg-white text-[#21261C] font-semibold text-xs sm:text-sm tracking-wider uppercase px-8 py-4 rounded-full transition-all duration-200 shadow-xl hover:shadow-2xl hover:scale-105 cursor-pointer flex items-center justify-center gap-2 group"
+                >
+                  <span>무료 Before & After 리포트 신청</span>
+                  <span class="inline-block transition-transform group-hover:translate-x-0.5">→</span>
+                </button>
+
+                <a
+                  href="#translator"
+                  class="w-full sm:w-auto bg-black/40 hover:bg-black/60 backdrop-blur-md text-[#FAF7F2] border border-white/30 text-xs sm:text-sm tracking-wider uppercase px-7 py-4 rounded-full transition-all duration-200 cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <i data-lucide="sparkles" class="w-4 h-4 text-[#C9D4A7]"></i>
+                  <span>소재 스펙 즉석 번역기 체험</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Bottom Bar: 3 Pillars -->
+            <div class="relative z-10 pt-6 border-t border-white/15 grid grid-cols-1 sm:grid-cols-3 gap-4 text-[#EAE6D8]">
+              <div class="flex items-start gap-3">
+                <div class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-xs font-serif-luxury shrink-0 text-[#D8E2B5]">
+                  01
+                </div>
+                <div>
+                  <h4 class="text-xs font-semibold text-white tracking-wide">핵심 무기: 1장 번역 리포트</h4>
+                  <p class="text-[11px] text-[#C9C4B6] leading-snug mt-0.5">
+                    딱딱한 스펙 문서를 감성·효능·친환경 3대 컨셉의 소비자 언어로 재해석
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-xs font-serif-luxury shrink-0 text-[#D8E2B5]">
+                  02
+                </div>
+                <div>
+                  <h4 class="text-xs font-semibold text-white tracking-wide">충남대 산학협력단 거점</h4>
+                  <p class="text-[11px] text-[#C9C4B6] leading-snug mt-0.5">
+                    창업동아리, 학생 창업팀, 가족기업 바이오/소재 런칭팀 무료 제휴
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-xs font-serif-luxury shrink-0 text-[#D8E2B5]">
+                  03
+                </div>
+                <div>
+                  <h4 class="text-xs font-semibold text-white tracking-wide">수익화(Upsell) 전략</h4>
+                  <p class="text-[11px] text-[#C9C4B6] leading-snug mt-0.5">
+                    컨셉 확정 후 자사몰 상세페이지, 인스타 광고 카피, 패키징 정식 유료 계약
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Material Cases (Benchmarking 4 Cards "New In") -->
+      <section id="cases" class="py-20 lg:py-28 bg-[#FAF7F2] border-t border-[#EAE3D4]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-14">
+            <span class="text-xs uppercase tracking-[0.25em] text-[#7F876E] font-medium block mb-2">
+              Material Cases & Translation
+            </span>
+            <h2 class="font-serif-luxury text-3xl sm:text-4xl lg:text-5xl font-normal text-[#21261B] tracking-tight mb-4">
+              New In : 소재 번역 쇼케이스
+            </h2>
+            <p class="text-sm sm:text-base text-[#616854] font-light leading-relaxed break-keep text-balance max-w-xl mx-auto">
+              <span class="inline-block">화학식과 수치로 가득했던 엔지니어의 스펙 시트가</span> <span class="inline-block">소비자의 지갑을 열게 하는</span> <span class="inline-block">3가지 언어로 다시 태어납니다.</span>
+            </p>
+          </div>
+
+          <!-- 4 Cards Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7">
+            <!-- Card 1: Eco Glass -->
+            <div class="group bg-[#F4F0E8] hover:bg-[#EFEAE0] rounded-3xl p-4 sm:p-5 flex flex-col justify-between border border-[#E5DECD] transition-all duration-300 hover:shadow-lg">
+              <div>
+                <div class="relative aspect-square w-full rounded-2xl overflow-hidden bg-[#FAF7F2] mb-4 flex items-center justify-center p-3 border border-[#E9E2D2]">
+                  <img
+                    src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80"
+                    alt="바이오 PLA 에코 리유저블 글래스"
+                    class="w-full h-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <span class="absolute top-3 left-3 bg-[#24291E]/90 text-[#FAF7F2] text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full font-medium shadow-sm">
+                    친환경 인증 리빙
+                  </span>
+                  <button
+                    onclick="viewCaseReport('eco-glass')"
+                    class="absolute bottom-3 right-3 bg-white/90 hover:bg-white text-[#21261B] p-2 rounded-full shadow-md transition-all hover:scale-110 cursor-pointer"
+                    title="1장 샘플 리포트 전체 보기"
+                  >
+                    <i data-lucide="eye" class="w-4 h-4"></i>
+                  </button>
+                </div>
+
+                <div class="text-center mb-4">
+                  <span class="text-[11px] uppercase tracking-wider text-[#79806B] font-medium block">
+                    식기 · 리빙용품
+                  </span>
+                  <h3 class="font-serif-luxury text-lg sm:text-xl text-[#21261B] font-medium mt-0.5 mb-1 group-hover:text-[#455030] transition-colors break-keep whitespace-nowrap">
+                    바이오 PLA 에코 글래스
+                  </h3>
+                  <p class="text-xs text-[#737A66] italic font-serif-luxury">
+                    Bio-PLA Eco Glass Container
+                  </p>
+                </div>
+
+                <!-- Tabs -->
+                <div class="bg-[#FAF7F2] p-1 rounded-xl flex items-center justify-between text-[11px] font-medium text-[#5E6551] mb-3 border border-[#E6DFCF]">
+                  <button onclick="switchCaseTone('case-1', 'before')" id="btn-case-1-before" class="flex-1 py-1 rounded-lg text-center font-semibold bg-[#2B3023] text-white">Before</button>
+                  <button onclick="switchCaseTone('case-1', 'emo')" id="btn-case-1-emo" class="flex-1 py-1 rounded-lg text-center hover:text-black">감성형</button>
+                  <button onclick="switchCaseTone('case-1', 'eff')" id="btn-case-1-eff" class="flex-1 py-1 rounded-lg text-center hover:text-black">효능형</button>
+                  <button onclick="switchCaseTone('case-1', 'eco')" id="btn-case-1-eco" class="flex-1 py-1 rounded-lg text-center hover:text-black">친환경</button>
+                </div>
+
+                <!-- Content Area -->
+                <div id="content-case-1" class="min-h-[115px] bg-[#FAF7F2] rounded-2xl p-3.5 border border-[#E5DECD] text-left flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-[#A15843] font-bold mb-1">
+                      <span class="w-1.5 h-1.5 rounded-full bg-[#A15843]"></span> 공학 스펙 데이터 (Before)
+                    </div>
+                    <p class="text-[11px] font-mono text-[#4C5340] leading-snug">비-석유계 L-락타이드 단량체 축중합 열가소성 폴리에스터</p>
+                    <div class="mt-2 text-[10px] bg-[#F1EADF] text-[#69705B] px-2 py-0.5 rounded font-mono inline-block">
+                      열변형 118℃ / 투과율 91.5%
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-[#E5DECD] flex items-center justify-between">
+                <span class="text-[11px] text-[#788069]">Before & After 완료</span>
+                <button onclick="viewCaseReport('eco-glass')" class="inline-flex items-center gap-1 text-xs font-medium text-[#292E21] hover:text-[#5F6A44] transition-colors cursor-pointer">
+                  <span>1장 리포트 열람</span> <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 2: Seaweed Soap -->
+            <div class="group bg-[#F4F0E8] hover:bg-[#EFEAE0] rounded-3xl p-4 sm:p-5 flex flex-col justify-between border border-[#E5DECD] transition-all duration-300 hover:shadow-lg">
+              <div>
+                <div class="relative aspect-square w-full rounded-2xl overflow-hidden bg-[#FAF7F2] mb-4 flex items-center justify-center p-3 border border-[#E9E2D2]">
+                  <img
+                    src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=600&q=80"
+                    alt="해조류 유래 고분자 하이드로겔 바"
+                    class="w-full h-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <span class="absolute top-3 left-3 bg-[#24291E]/90 text-[#FAF7F2] text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full font-medium shadow-sm">
+                    화장품 신소재 베스트
+                  </span>
+                  <button
+                    onclick="viewCaseReport('seaweed-soap')"
+                    class="absolute bottom-3 right-3 bg-white/90 hover:bg-white text-[#21261B] p-2 rounded-full shadow-md transition-all hover:scale-110 cursor-pointer"
+                    title="1장 샘플 리포트 전체 보기"
+                  >
+                    <i data-lucide="eye" class="w-4 h-4"></i>
+                  </button>
+                </div>
+
+                <div class="text-center mb-4">
+                  <span class="text-[11px] uppercase tracking-wider text-[#79806B] font-medium block">
+                    더마 · 스킨케어
+                  </span>
+                  <h3 class="font-serif-luxury text-lg sm:text-xl text-[#21261B] font-medium mt-0.5 mb-1 group-hover:text-[#455030] transition-colors">
+                    해조류 고분자 하이드로겔 바
+                  </h3>
+                  <p class="text-xs text-[#737A66] italic font-serif-luxury">
+                    Seaweed Polymer Natural Bar
+                  </p>
+                </div>
+
+                <!-- Tabs -->
+                <div class="bg-[#FAF7F2] p-1 rounded-xl flex items-center justify-between text-[11px] font-medium text-[#5E6551] mb-3 border border-[#E6DFCF]">
+                  <button onclick="switchCaseTone('case-2', 'before')" id="btn-case-2-before" class="flex-1 py-1 rounded-lg text-center hover:text-black">Before</button>
+                  <button onclick="switchCaseTone('case-2', 'emo')" id="btn-case-2-emo" class="flex-1 py-1 rounded-lg text-center font-semibold bg-[#8E7E6A] text-white">감성형</button>
+                  <button onclick="switchCaseTone('case-2', 'eff')" id="btn-case-2-eff" class="flex-1 py-1 rounded-lg text-center hover:text-black">효능형</button>
+                  <button onclick="switchCaseTone('case-2', 'eco')" id="btn-case-2-eco" class="flex-1 py-1 rounded-lg text-center hover:text-black">친환경</button>
+                </div>
+
+                <!-- Content Area -->
+                <div id="content-case-2" class="min-h-[115px] bg-[#FAF7F2] rounded-2xl p-3.5 border border-[#E5DECD] text-left flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-[#57643E] font-bold mb-1">
+                      <i data-lucide="sparkles" class="w-3 h-3 text-[#798858]"></i> 소비자 UX 카피 (감성형)
+                    </div>
+                    <h4 class="font-serif-luxury text-xs sm:text-sm font-semibold text-[#1F231A] leading-snug mb-1">
+                      바다가 건네는 72시간의 깊은 수분 숨결
+                    </h4>
+                    <p class="text-[11px] text-[#555C47] leading-relaxed line-clamp-2">
+                      세안을 마친 후에도 피부가 당기지 않는 이유. 깊은 바다의 해조류가 피부 틈새를 촉촉한 이슬로 감싸 안아줍니다.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-[#E5DECD] flex items-center justify-between">
+                <span class="text-[11px] text-[#788069]">충남대 산학협력단 실증</span>
+                <button onclick="viewCaseReport('seaweed-soap')" class="inline-flex items-center gap-1 text-xs font-medium text-[#292E21] hover:text-[#5F6A44] transition-colors cursor-pointer">
+                  <span>1장 리포트 열람</span> <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 3: Mycelium Leather -->
+            <div class="group bg-[#F4F0E8] hover:bg-[#EFEAE0] rounded-3xl p-4 sm:p-5 flex flex-col justify-between border border-[#E5DECD] transition-all duration-300 hover:shadow-lg">
+              <div>
+                <div class="relative aspect-square w-full rounded-2xl overflow-hidden bg-[#FAF7F2] mb-4 flex items-center justify-center p-3 border border-[#E9E2D2]">
+                  <img
+                    src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80"
+                    alt="버섯 균사체 바이오 비건 레더 슬리브"
+                    class="w-full h-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <span class="absolute top-3 left-3 bg-[#24291E]/90 text-[#FAF7F2] text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full font-medium shadow-sm">
+                    패션/소재 혁신
+                  </span>
+                  <button
+                    onclick="viewCaseReport('mycelium-leather')"
+                    class="absolute bottom-3 right-3 bg-white/90 hover:bg-white text-[#21261B] p-2 rounded-full shadow-md transition-all hover:scale-110 cursor-pointer"
+                    title="1장 샘플 리포트 전체 보기"
+                  >
+                    <i data-lucide="eye" class="w-4 h-4"></i>
+                  </button>
+                </div>
+
+                <div class="text-center mb-4">
+                  <span class="text-[11px] uppercase tracking-wider text-[#79806B] font-medium block">
+                    패션 · 모바일 악세서리
+                  </span>
+                  <h3 class="font-serif-luxury text-lg sm:text-xl text-[#21261B] font-medium mt-0.5 mb-1 group-hover:text-[#455030] transition-colors break-keep whitespace-nowrap">
+                    균사체 바이오 비건 레더
+                  </h3>
+                  <p class="text-xs text-[#737A66] italic font-serif-luxury">
+                    Mycelium Bio-Composite Sleeve
+                  </p>
+                </div>
+
+                <!-- Tabs -->
+                <div class="bg-[#FAF7F2] p-1 rounded-xl flex items-center justify-between text-[11px] font-medium text-[#5E6551] mb-3 border border-[#E6DFCF]">
+                  <button onclick="switchCaseTone('case-3', 'before')" id="btn-case-3-before" class="flex-1 py-1 rounded-lg text-center hover:text-black">Before</button>
+                  <button onclick="switchCaseTone('case-3', 'emo')" id="btn-case-3-emo" class="flex-1 py-1 rounded-lg text-center hover:text-black">감성형</button>
+                  <button onclick="switchCaseTone('case-3', 'eff')" id="btn-case-3-eff" class="flex-1 py-1 rounded-lg text-center font-semibold bg-[#4A5538] text-white">효능형</button>
+                  <button onclick="switchCaseTone('case-3', 'eco')" id="btn-case-3-eco" class="flex-1 py-1 rounded-lg text-center hover:text-black">친환경</button>
+                </div>
+
+                <!-- Content Area -->
+                <div id="content-case-3" class="min-h-[115px] bg-[#FAF7F2] rounded-2xl p-3.5 border border-[#E5DECD] text-left flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-[#57643E] font-bold mb-1">
+                      <i data-lucide="sparkles" class="w-3 h-3 text-[#798858]"></i> 소비자 UX 카피 (효능형)
+                    </div>
+                    <h4 class="font-serif-luxury text-xs sm:text-sm font-semibold text-[#1F231A] leading-snug mb-1">
+                      천연 가죽보다 32% 가볍고 찢김 없는 내구성
+                    </h4>
+                    <p class="text-[11px] text-[#555C47] leading-relaxed line-clamp-2">
+                      24.3MPa의 견고한 인장 강도로 스크래치를 방어하며 가벼운 무게로 손목 피로를 덜어줍니다.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-[#E5DECD] flex items-center justify-between">
+                <span class="text-[11px] text-[#788069]">대덕특구 스타트업 제휴</span>
+                <button onclick="viewCaseReport('mycelium-leather')" class="inline-flex items-center gap-1 text-xs font-medium text-[#292E21] hover:text-[#5F6A44] transition-colors cursor-pointer">
+                  <span>1장 리포트 열람</span> <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 4: Cellulose Sponge -->
+            <div class="group bg-[#F4F0E8] hover:bg-[#EFEAE0] rounded-3xl p-4 sm:p-5 flex flex-col justify-between border border-[#E5DECD] transition-all duration-300 hover:shadow-lg">
+              <div>
+                <div class="relative aspect-square w-full rounded-2xl overflow-hidden bg-[#FAF7F2] mb-4 flex items-center justify-center p-3 border border-[#E9E2D2]">
+                  <img
+                    src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=600&q=80"
+                    alt="식물성 셀룰로오스 다공체 스펀지"
+                    class="w-full h-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <span class="absolute top-3 left-3 bg-[#24291E]/90 text-[#FAF7F2] text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full font-medium shadow-sm">
+                    제로웨이스트 욕실
+                  </span>
+                  <button
+                    onclick="viewCaseReport('cellulose-sponge')"
+                    class="absolute bottom-3 right-3 bg-white/90 hover:bg-white text-[#21261B] p-2 rounded-full shadow-md transition-all hover:scale-110 cursor-pointer"
+                    title="1장 샘플 리포트 전체 보기"
+                  >
+                    <i data-lucide="eye" class="w-4 h-4"></i>
+                  </button>
+                </div>
+
+                <div class="text-center mb-4">
+                  <span class="text-[11px] uppercase tracking-wider text-[#79806B] font-medium block">
+                    바스 · 제로웨이스트
+                  </span>
+                  <h3 class="font-serif-luxury text-lg sm:text-xl text-[#21261B] font-medium mt-0.5 mb-1 group-hover:text-[#455030] transition-colors">
+                    셀룰로오스 다공체 스펀지
+                  </h3>
+                  <p class="text-xs text-[#737A66] italic font-serif-luxury">
+                    Compostable Cellulose Sponge
+                  </p>
+                </div>
+
+                <!-- Tabs -->
+                <div class="bg-[#FAF7F2] p-1 rounded-xl flex items-center justify-between text-[11px] font-medium text-[#5E6551] mb-3 border border-[#E6DFCF]">
+                  <button onclick="switchCaseTone('case-4', 'before')" id="btn-case-4-before" class="flex-1 py-1 rounded-lg text-center hover:text-black">Before</button>
+                  <button onclick="switchCaseTone('case-4', 'emo')" id="btn-case-4-emo" class="flex-1 py-1 rounded-lg text-center hover:text-black">감성형</button>
+                  <button onclick="switchCaseTone('case-4', 'eff')" id="btn-case-4-eff" class="flex-1 py-1 rounded-lg text-center hover:text-black">효능형</button>
+                  <button onclick="switchCaseTone('case-4', 'eco')" id="btn-case-4-eco" class="flex-1 py-1 rounded-lg text-center font-semibold bg-[#6D7751] text-white">친환경</button>
+                </div>
+
+                <!-- Content Area -->
+                <div id="content-case-4" class="min-h-[115px] bg-[#FAF7F2] rounded-2xl p-3.5 border border-[#E5DECD] text-left flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-[#57643E] font-bold mb-1">
+                      <i data-lucide="sparkles" class="w-3 h-3 text-[#798858]"></i> 소비자 UX 카피 (친환경)
+                    </div>
+                    <h4 class="font-serif-luxury text-xs sm:text-sm font-semibold text-[#1F231A] leading-snug mb-1">
+                      하수구로 흘러가는 미세플라스틱 0%의 확신
+                    </h4>
+                    <p class="text-[11px] text-[#555C47] leading-relaxed line-clamp-2">
+                      석유 스펀지 대신 순수 나무 펄프로 빚었습니다. 다 쓰고 화분에 묻으면 식물의 거름이 됩니다.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-[#E5DECD] flex items-center justify-between">
+                <span class="text-[11px] text-[#788069]">1장 리포트 샘플 제공</span>
+                <button onclick="viewCaseReport('cellulose-sponge')" class="inline-flex items-center gap-1 text-xs font-medium text-[#292E21] hover:text-[#5F6A44] transition-colors cursor-pointer">
+                  <span>1장 리포트 열람</span> <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom CTA Banner -->
+          <div class="mt-12 text-center bg-[#F1ECE1] rounded-2xl p-6 sm:p-8 border border-[#E3DCcb] max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-left">
+              <h4 class="font-serif-luxury text-lg sm:text-xl text-[#21261B] font-medium">
+                우리 기업의 신소재 기술도 이렇게 바뀔 수 있을까요?
+              </h4>
+              <p class="text-xs text-[#626A54] mt-0.5">
+                화학식이나 연구 보고서 페이지만 주시면, 24시간 내 1장 번역 리포트를 무료로 전달해 드립니다.
+              </p>
+            </div>
+            <button
+              onclick="openReportModal('apply')"
+              class="shrink-0 bg-[#262B20] hover:bg-[#161A12] text-[#FAF7F2] px-6 py-3 rounded-full text-xs uppercase tracking-wider font-medium transition-all shadow hover:shadow-md cursor-pointer flex items-center gap-2"
+            >
+              <span>무료 번역 리포트 신청</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Split Feature Banner (Zero Waste Bath Block Benchmarking) -->
+      <section id="about" class="py-16 sm:py-24 bg-[#FAF7F2]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="bg-[#B9BFA0] rounded-[2.5rem] p-8 sm:p-14 lg:p-18 text-[#242A1D] border border-[#A8AF8C] shadow-sm relative overflow-hidden">
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+              <div class="lg:col-span-7 flex flex-col justify-center">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF7F2]/40 backdrop-blur-xs text-xs font-semibold uppercase tracking-widest text-[#2D3323] w-fit mb-5">
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#3A422E]"></i>
+                  MVP Core Weapon : 1-Page Translation Report
+                </div>
+
+                <h2 class="font-serif-luxury text-3xl sm:text-5xl lg:text-[3.5rem] font-normal leading-[1.12] tracking-tight text-[#1D2217] mb-6 break-keep">
+                  <span class="inline-block break-keep whitespace-nowrap">소재 스펙 ➔ 소비자 언어</span> <br />
+                  <span class="inline-block break-keep whitespace-nowrap"><span class="italic font-light">Before & After</span> 번역 리포트</span>
+                </h2>
+
+                <p class="text-sm sm:text-base lg:text-lg text-[#2E3525] font-light leading-relaxed mb-8 max-w-xl break-keep text-balance">
+                  <span class="inline-block">아무리 뛰어난 고분자·신소재 기술도,</span> <span class="inline-block">소비자의 심장을 뛰게 하지 못하면</span>
+                  <span class="inline-block">결국 ‘서랍 속 논문’이나</span> <span class="inline-block">‘외면받는 기술’로 머물게 됩니다.</span>
+                  <span class="inline-block">공학도 출신 대표님들의 기술적 자부심을</span> <span class="inline-block">고객의 구매 결정으로 연결합니다.</span>
+                </p>
+
+                <!-- 3 Steps -->
+                <div class="space-y-4 mb-8">
+                  <div class="flex items-start gap-3 bg-[#FAF7F2]/45 backdrop-blur-xs p-3.5 rounded-2xl border border-white/30">
+                    <span class="w-6 h-6 rounded-full bg-[#272D20] text-[#FAF7F2] text-xs flex items-center justify-center font-serif-luxury shrink-0 mt-0.5">1</span>
+                    <div>
+                      <h4 class="text-xs sm:text-sm font-semibold text-[#1C2116] break-keep">딱딱한 기술 스펙 문서(Before) 확보</h4>
+                      <p class="text-xs text-[#38402F] leading-snug mt-0.5 break-keep">
+                        연구소의 TDS(기술데이터시트), 전성분표, 특허 요약서만 전달해 주시면 됩니다.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start gap-3 bg-[#FAF7F2]/45 backdrop-blur-xs p-3.5 rounded-2xl border border-white/30">
+                    <span class="w-6 h-6 rounded-full bg-[#272D20] text-[#FAF7F2] text-xs flex items-center justify-center font-serif-luxury shrink-0 mt-0.5">2</span>
+                    <div>
+                      <h4 class="text-xs sm:text-sm font-semibold text-[#1C2116] break-keep">3가지 컨셉(감성형 · 효능강조형 · 친환경형) 1장 리포트 제작</h4>
+                      <p class="text-xs text-[#38402F] leading-snug mt-0.5 break-keep">
+                        <span class="inline-block">대표와 마케팅팀에게</span> <span class="inline-block">직관적인 ‘아하(Aha!) 모먼트’를 선사하는</span> <span class="inline-block">고품격 샘플 시트 무료 발행.</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start gap-3 bg-[#FAF7F2]/45 backdrop-blur-xs p-3.5 rounded-2xl border border-white/30">
+                    <span class="w-6 h-6 rounded-full bg-[#272D20] text-[#FAF7F2] text-xs flex items-center justify-center font-serif-luxury shrink-0 mt-0.5">3</span>
+                    <div>
+                      <h4 class="text-xs sm:text-sm font-semibold text-[#1C2116]">자사몰 상세페이지 & 패키징 정식 유료 계약(Upsell)</h4>
+                      <p class="text-xs text-[#38402F] leading-snug mt-0.5">
+                        컨셉 확정 후 실제 크라우드펀딩 스토리, 인스타 광고 후킹 카피, 용기 인쇄 문구로 확장.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-4">
+                  <button
+                    onclick="openReportModal('apply')"
+                    class="bg-[#24291E] hover:bg-[#151911] text-[#FAF7F2] px-8 py-4 rounded-full text-xs sm:text-sm tracking-wider uppercase font-semibold transition-all shadow-md hover:shadow-xl hover:scale-105 cursor-pointer flex items-center gap-2"
+                  >
+                    <span>1장 무료 번역 리포트 신청하기</span>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                  </button>
+                  <a
+                    href="#business"
+                    class="bg-[#FAF7F2]/60 hover:bg-[#FAF7F2] text-[#22271B] px-6 py-4 rounded-full text-xs tracking-wider uppercase font-medium transition-all border border-[#9EA67D] cursor-pointer"
+                  >
+                    수익화 로드맵 보기
+                  </a>
+                </div>
+              </div>
+
+              <div class="lg:col-span-5">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-[#FAF7F2]/40 aspect-[4/5] max-h-[560px] mx-auto w-full group">
+                  <img
+                    src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80"
+                    alt="Zero waste botanical materials and natural soap"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div class="absolute bottom-5 inset-x-5 bg-[#FAF7F2]/95 backdrop-blur-md rounded-2xl p-4.5 border border-white/60 shadow-lg text-[#202519]">
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-[10px] uppercase tracking-widest font-bold text-[#6D7751]">Report Output Preview</span>
+                      <span class="text-[10px] bg-[#E7E2D2] text-[#424835] px-2 py-0.5 rounded-full font-medium">충남대 제휴 모델</span>
+                    </div>
+                    <h4 class="font-serif-luxury text-sm font-semibold text-[#1C2116] mb-1">
+                      "연구소의 10장짜리 시험성적서가 1장의 감각적인 고객 경험 카피로"
+                    </h4>
+                    <p class="text-[11px] text-[#555C47] leading-relaxed">
+                      복잡한 고분자 가교 결합 구조 ➔ 72시간 깊은 수분 숨결
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: 3 Translation Concepts (Shop Collections Benchmarking) -->
+      <section id="concepts" class="py-20 lg:py-28 bg-[#FAF7F2] border-t border-[#EAE3D4]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-xs uppercase tracking-[0.25em] text-[#7F876E] font-medium block mb-2">
+              The 3 Translation Angles
+            </span>
+            <h2 class="font-serif-luxury text-3xl sm:text-4xl lg:text-5xl font-normal text-[#21261B] tracking-tight mb-4">
+              3가지 맞춤형 소비자 언어 컨셉
+            </h2>
+            <p class="text-sm sm:text-base text-[#616854] font-light leading-relaxed">
+              원료의 물성 하나도 브랜드의 철학에 따라 전혀 다른 언어로 전달됩니다.
+              초기 기술 스타트업의 포지셔닝에 최적화된 3대 언어 프레임워크를 제공합니다.
+            </p>
+          </div>
+
+          <!-- 3 Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-14">
+            <!-- 01 Emotional -->
+            <div onclick="selectConcept('emotional')" id="card-concept-emotional" class="group relative rounded-3xl overflow-hidden aspect-[3/4] cursor-pointer transition-all duration-500 border-2 border-[#2D3323] shadow-2xl scale-[1.02]">
+              <img
+                src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80"
+                alt="Emotional Concept"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-[0.82] contrast-[0.98]"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#1A1E15]/90 via-[#21261B]/35 to-black/20"></div>
+              <div class="absolute top-5 left-5 right-5 flex items-center justify-between z-10">
+                <div class="p-2 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-[#C98B75]">
+                  <i data-lucide="heart" class="w-5 h-5"></i>
+                </div>
+                <span class="text-[10px] uppercase tracking-widest font-semibold px-3 py-1 rounded-full bg-black/40 backdrop-blur-md text-[#FAF7F2] border border-white/10">
+                  Concept #01
+                </span>
+              </div>
+              <div class="absolute inset-x-0 bottom-0 p-6 sm:p-7 z-10 flex flex-col justify-end text-center">
+                <h3 class="font-serif-luxury text-2xl sm:text-3xl lg:text-4xl text-[#FAF7F2] font-normal tracking-wide drop-shadow-sm mb-2 group-hover:text-[#E8F0CD] transition-colors">
+                  감성형 (Emotional)
+                </h3>
+                <p class="text-xs sm:text-[13px] text-[#DDD9CD] font-light leading-snug mb-3">
+                  일상의 온도를 높이는 감각적 스토리텔링
+                </p>
+                <div class="pt-3 border-t border-white/20 flex items-center justify-center gap-1.5 text-xs text-[#FAF7F2] tracking-wider uppercase font-medium">
+                  <span>상세 보기 및 적용처</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- 02 Efficacy -->
+            <div onclick="selectConcept('efficacy')" id="card-concept-efficacy" class="group relative rounded-3xl overflow-hidden aspect-[3/4] cursor-pointer transition-all duration-500 border-2 border-transparent hover:border-[#BFC6A8] hover:shadow-xl">
+              <img
+                src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=800&q=80"
+                alt="Efficacy Concept"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-[0.82] contrast-[0.98]"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#1A1E15]/90 via-[#21261B]/35 to-black/20"></div>
+              <div class="absolute top-5 left-5 right-5 flex items-center justify-between z-10">
+                <div class="p-2 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-[#869E68]">
+                  <i data-lucide="shield" class="w-5 h-5"></i>
+                </div>
+                <span class="text-[10px] uppercase tracking-widest font-semibold px-3 py-1 rounded-full bg-black/40 backdrop-blur-md text-[#FAF7F2] border border-white/10">
+                  Concept #02
+                </span>
+              </div>
+              <div class="absolute inset-x-0 bottom-0 p-6 sm:p-7 z-10 flex flex-col justify-end text-center">
+                <h3 class="font-serif-luxury text-2xl sm:text-3xl lg:text-4xl text-[#FAF7F2] font-normal tracking-wide drop-shadow-sm mb-2 group-hover:text-[#E8F0CD] transition-colors">
+                  효능형 (Efficacy)
+                </h3>
+                <p class="text-xs sm:text-[13px] text-[#DDD9CD] font-light leading-snug mb-3">
+                  숫자와 메커니즘이 증명하는 압도적 기술력
+                </p>
+                <div class="pt-3 border-t border-white/20 flex items-center justify-center gap-1.5 text-xs text-[#FAF7F2] tracking-wider uppercase font-medium">
+                  <span>상세 보기 및 적용처</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- 03 Eco -->
+            <div onclick="selectConcept('eco')" id="card-concept-eco" class="group relative rounded-3xl overflow-hidden aspect-[3/4] cursor-pointer transition-all duration-500 border-2 border-transparent hover:border-[#BFC6A8] hover:shadow-xl">
+              <img
+                src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80"
+                alt="Eco Concept"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-[0.82] contrast-[0.98]"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#1A1E15]/90 via-[#21261B]/35 to-black/20"></div>
+              <div class="absolute top-5 left-5 right-5 flex items-center justify-between z-10">
+                <div class="p-2 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-[#73A670]">
+                  <i data-lucide="leaf" class="w-5 h-5"></i>
+                </div>
+                <span class="text-[10px] uppercase tracking-widest font-semibold px-3 py-1 rounded-full bg-black/40 backdrop-blur-md text-[#FAF7F2] border border-white/10">
+                  Concept #03
+                </span>
+              </div>
+              <div class="absolute inset-x-0 bottom-0 p-6 sm:p-7 z-10 flex flex-col justify-end text-center">
+                <h3 class="font-serif-luxury text-2xl sm:text-3xl lg:text-4xl text-[#FAF7F2] font-normal tracking-wide drop-shadow-sm mb-2 group-hover:text-[#E8F0CD] transition-colors">
+                  친환경형 (Eco)
+                </h3>
+                <p class="text-xs sm:text-[13px] text-[#DDD9CD] font-light leading-snug mb-3">
+                  지구와 피부에 남기는 탄소 발자국 0%의 순환 가치
+                </p>
+                <div class="pt-3 border-t border-white/20 flex items-center justify-center gap-1.5 text-xs text-[#FAF7F2] tracking-wider uppercase font-medium">
+                  <span>상세 보기 및 적용처</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Concept Inspector -->
+          <div id="concept-inspector" class="bg-[#F2EDE2] rounded-3xl p-6 sm:p-10 border border-[#E3DBC9] shadow-sm max-w-4xl mx-auto transition-all">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#E0D7C4]">
+              <div>
+                <span class="text-[11px] uppercase tracking-widest text-[#7B836C] font-semibold">Selected Strategy</span>
+                <h4 id="inspector-title" class="font-serif-luxury text-xl sm:text-2xl text-[#1E2319] font-medium">
+                  감성형 (Emotional Lifestyle)
+                </h4>
+              </div>
+              <div class="text-left md:text-right">
+                <span class="text-[11px] text-[#7A826B] block">추천 타겟</span>
+                <span id="inspector-target" class="text-xs font-semibold text-[#292E20]">
+                  인디 뷰티, 감성 홈케어, 킨포크 무드의 라이프웨어 브랜드
+                </span>
+              </div>
+            </div>
+
+            <div class="py-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h5 class="text-xs uppercase tracking-wider text-[#636C54] font-semibold mb-2">UX 라이팅 핵심 방향</h5>
+                <p id="inspector-direction" class="text-xs sm:text-sm text-[#313626] leading-relaxed bg-[#FAF7F2] p-4 rounded-2xl border border-[#E4DDD0]">
+                  공학적 공식을 피부의 감촉과 일상의 휴식 경험으로 전환하여 소비자가 자신을 위한 선물로 느끼게 만듭니다.
+                </p>
+              </div>
+              <div>
+                <h5 class="text-xs uppercase tracking-wider text-[#636C54] font-semibold mb-2">실제 제품 상세페이지 카피 예시</h5>
+                <div class="bg-[#FAF7F2] p-4 rounded-2xl border border-[#E4DDD0]">
+                  <p id="inspector-headline" class="font-serif-luxury text-sm sm:text-base font-semibold text-[#1C2016] mb-1.5 leading-snug break-keep text-balance">
+                    "손끝에 닿는 순간, 오늘 하루 쌓인 긴장이 조용히 녹아내립니다."
+                  </p>
+                  <p id="inspector-body" class="text-xs text-[#525946] leading-relaxed break-keep text-balance">
+                    바다가 품은 깊은 미네랄과 해조류 추출물이 피부 위에 맑은 수분 막을 형성해, 하루 종일 건조할 틈 없는 편안함을 안겨줍니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <span class="text-xs text-[#6F7760]">💡 1장 무료 리포트에는 세 가지 컨셉이 모두 포함되어 비교 선택할 수 있습니다.</span>
+              <div class="flex items-center gap-2 w-full sm:w-auto">
+                <a href="#translator" class="flex-1 sm:flex-none text-xs text-[#282D20] hover:text-[#5F6A44] font-medium px-4 py-2.5 rounded-full border border-[#D5CCBA] hover:bg-white transition-colors cursor-pointer text-center">
+                  직접 번역해보기
+                </a>
+                <button onclick="openReportModal('apply')" class="flex-1 sm:flex-none bg-[#242A1D] hover:bg-[#151911] text-[#FAF7F2] text-xs uppercase tracking-wider px-5 py-2.5 rounded-full font-medium transition-all cursor-pointer flex items-center justify-center gap-1.5">
+                  <span>이 컨셉으로 리포트 신청</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Live Instant Simulator -->
+      <section id="translator" class="py-20 lg:py-28 bg-[#F4F0E8] border-t border-[#E5DECD]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-14">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EAE3D4] text-[#474F3B] text-xs font-semibold uppercase tracking-wider mb-3">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#6B7653]"></i>
+              Live Simulator : Instant Translation
+            </div>
+            <h2 class="font-serif-luxury text-3xl sm:text-4xl lg:text-5xl font-normal text-[#21261B] tracking-tight mb-4 break-keep text-balance">
+              <span class="inline-block">소재 스펙 ➔ 소비자 언어</span> <span class="inline-block">즉석 시뮬레이터</span>
+            </h2>
+            <p class="text-sm sm:text-base text-[#616854] font-light leading-relaxed break-keep text-balance max-w-2xl mx-auto">
+              <span class="inline-block">대표님의 신소재나 성분 스펙을 선택해 보세요.</span>
+              <span class="inline-block">공학적 수치(Before)가</span> <span class="inline-block">소비자의 지갑을 여는</span> <span class="inline-block">3가지 감각적 언어(After)로</span> <span class="inline-block">즉시 번역됩니다.</span>
+            </p>
+          </div>
+
+          <!-- Presets -->
+          <div class="flex flex-wrap items-center justify-center gap-2.5 mb-10">
+            <button onclick="setTranslatorPreset('hydrogel')" id="btn-pre-hydrogel" class="px-4 sm:px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all cursor-pointer bg-[#272D20] text-[#FAF7F2] shadow-md scale-105">
+              해조류 갈조 추출 다당류 고분자 (화장품)
+            </button>
+            <button onclick="setTranslatorPreset('leather')" id="btn-pre-leather" class="px-4 sm:px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all cursor-pointer bg-[#FAF7F2] text-[#4D5442] hover:bg-white border border-[#DDD5C2]">
+              버섯 균사체 바이오 비건 레더 (패션의류)
+            </button>
+            <button onclick="setTranslatorPreset('biopla')" id="btn-pre-biopla" class="px-4 sm:px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all cursor-pointer bg-[#FAF7F2] text-[#4D5442] hover:bg-white border border-[#DDD5C2]">
+              사탕수수 발효 바이오-PLA 복합체 (리빙/식기)
+            </button>
+            <button onclick="setTranslatorPreset('custom')" id="btn-pre-custom" class="px-4 sm:px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all cursor-pointer bg-[#FAF7F2] text-[#4D5442] hover:bg-white border border-[#DDD5C2] flex items-center gap-1.5">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#79855C]"></i> 직접 우리 소재 입력하기
+            </button>
+          </div>
+
+          <!-- Simulator Box -->
+          <div class="bg-[#FAF7F2] rounded-3xl p-6 sm:p-10 border border-[#E1D8C6] shadow-md max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              <!-- Left: Before -->
+              <div class="lg:col-span-5 bg-[#F2EDE2] rounded-2xl p-5 sm:p-6 border border-[#DDD4C2] flex flex-col justify-between h-full">
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full bg-[#B3543F]"></span>
+                      <span class="text-[11px] font-bold uppercase tracking-wider text-[#A04834]">Before : 공학 스펙 시트</span>
+                    </div>
+                    <span class="text-[10px] bg-[#E5DEC9] text-[#555C48] px-2 py-0.5 rounded font-mono">TDS / Raw Data</span>
+                  </div>
+
+                  <div class="mb-3">
+                    <span class="text-xs text-[#7B826D] block">소재 및 성분명</span>
+                    <h4 id="sim-material-title" class="font-serif-luxury text-base font-semibold text-[#1C2016]">
+                      해조류 갈조 추출 다당류 고분자 (화장품)
+                    </h4>
+                  </div>
+
+                  <div id="sim-spec-display-area">
+                    <label class="text-xs text-[#7B826D] block mb-1">엔지니어의 원문 데이터:</label>
+                    <div id="sim-spec-text" class="text-xs font-mono bg-white/80 p-3.5 rounded-xl border border-[#DDD5C5] text-[#3D4434] leading-relaxed">
+                      "갈조류 추출 알긴산-후코이단 가교 결합 매트릭스. 점도 4,800 cP, In-vitro TEWL(경피 수분 손실) 저감률 42.8%, 다가 양이온 킬레이트 결합 구조체."
+                    </div>
+                    <div class="mt-3 text-[11px] text-[#7A826B] flex items-center gap-1.5">
+                      <span class="font-semibold text-[#343A2B]">주요 공학 지표:</span>
+                      <span id="sim-spec-metric" class="bg-[#E7E0D0] px-2 py-0.5 rounded font-mono text-[#4C5340]">
+                        점도 4,800 cP · TEWL 저감 42.8%
+                      </span>
+                    </div>
+                  </div>
+
+                  <div id="sim-custom-input-area" class="hidden">
+                    <label class="text-xs text-[#686F5B] block mb-1.5 font-medium">
+                      보유하신 신소재/기술 스펙을 입력해 보세요:
+                    </label>
+                    <textarea
+                      id="sim-custom-textarea"
+                      oninput="onCustomSpecInput()"
+                      placeholder="예: 분자량 50kDa의 발효 히알루론산 나노 복합체. 피부 흡수율 300% 증가, 인장강도 18MPa..."
+                      class="w-full text-xs p-3 rounded-xl bg-white border border-[#D5CDBD] text-[#22271C] focus:outline-none focus:ring-1 focus:ring-[#6E7B54] min-h-[140px] font-mono leading-relaxed"
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-[#DDD4C2] text-[11px] text-[#7B836D] leading-snug">
+                  ⚠️ 대부분의 소비자는 이 수치를 보았을 때 구매 욕구를 느끼지 못하고 페이지를 이탈합니다.
+                </div>
+              </div>
+
+              <!-- Right: After -->
+              <div class="lg:col-span-7 flex flex-col justify-between h-full">
+                <div>
+                  <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                    <div class="flex items-center gap-2">
+                      <i data-lucide="sparkles" class="w-4 h-4 text-[#798858]"></i>
+                      <span class="text-[11px] font-bold uppercase tracking-wider text-[#4D5838]">After : 소비자의 심장을 뛰게 하는 언어</span>
+                    </div>
+
+                    <!-- 3 Tone Tabs -->
+                    <div class="flex bg-[#EAE4D5] p-1 rounded-xl text-xs font-medium">
+                      <button onclick="switchSimTone('emotional')" id="btn-sim-emotional" class="px-3 py-1.5 rounded-lg transition-all cursor-pointer bg-[#292E21] text-white shadow-xs font-semibold">감성형</button>
+                      <button onclick="switchSimTone('efficacy')" id="btn-sim-efficacy" class="px-3 py-1.5 rounded-lg transition-all cursor-pointer text-[#565D48] hover:text-black">효능강조형</button>
+                      <button onclick="switchSimTone('eco')" id="btn-sim-eco" class="px-3 py-1.5 rounded-lg transition-all cursor-pointer text-[#565D48] hover:text-black">친환경형</button>
+                    </div>
+                  </div>
+
+                  <!-- Output Card -->
+                  <div class="bg-[#FAF7F2] rounded-2xl p-5 sm:p-7 border-2 border-[#D5CDBD] shadow-sm relative group">
+                    <div class="flex items-center justify-between mb-3">
+                      <span id="sim-badge" class="text-[11px] uppercase tracking-widest font-semibold px-2.5 py-0.5 rounded-full bg-[#E8E2D2] text-[#4A533E]">
+                        Option 01 : 감성 라이프스타일
+                      </span>
+                      <button onclick="copySimCopy()" class="inline-flex items-center gap-1 text-[11px] text-[#555C47] hover:text-[#1F231A] px-2.5 py-1 rounded-lg hover:bg-[#EBE5D6] transition-colors cursor-pointer">
+                        <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                        <span id="sim-copy-text">카피 복사</span>
+                      </button>
+                    </div>
+
+                    <h3 id="sim-output-headline" class="font-serif-luxury text-lg sm:text-2xl font-semibold text-[#1C2116] leading-snug mb-3">
+                      바다가 품은 깊은 이슬, 피부 위에 내려앉는 72시간의 휴식
+                    </h3>
+                    <p id="sim-output-body" class="text-xs sm:text-sm text-[#474F3B] leading-relaxed mb-5">
+                      하루 종일 지치고 메마른 얼굴에 바다가 건네는 다정한 수분 숨결을 채워줍니다. 손끝이 닿는 순간 느껴지는 맑고 투명한 진정.
+                    </p>
+
+                    <div id="sim-keywords" class="flex flex-wrap gap-2 pt-3 border-t border-[#EAE3D4]">
+                      <span class="text-[11px] font-medium bg-[#EFE9DB] text-[#5A634E] px-2.5 py-1 rounded-md">#바다이슬</span>
+                      <span class="text-[11px] font-medium bg-[#EFE9DB] text-[#5A634E] px-2.5 py-1 rounded-md">#다정한수분</span>
+                      <span class="text-[11px] font-medium bg-[#EFE9DB] text-[#5A634E] px-2.5 py-1 rounded-md">#온화한휴식</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-[#E5DECD] flex flex-col sm:flex-row items-center justify-between gap-3">
+                  <span class="text-xs text-[#717964]">
+                    이 번역본을 포함한 <strong>[1장 정식 PDF 리포트]</strong>를 발급받으시겠습니까?
+                  </span>
+                  <button
+                    onclick="openReportModal('apply')"
+                    class="w-full sm:w-auto bg-[#262B20] hover:bg-[#161912] text-[#FAF7F2] text-xs uppercase tracking-wider px-6 py-3 rounded-full font-medium transition-all shadow hover:shadow-md cursor-pointer flex items-center justify-center gap-1.5"
+                  >
+                    <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                    <span>1장 리포트 전체 보기 & 신청</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: The Re.material Mission & Regional Roadmap -->
+      <section id="roadmap" class="py-20 lg:py-28 bg-[#FAF7F2] border-t border-[#EAE3D4]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs uppercase tracking-[0.25em] text-[#7F876E] font-medium block mb-2">
+              The Regional Ecosystem & Roadmap
+            </span>
+            <h2 class="font-serif-luxury text-3xl sm:text-5xl lg:text-6xl font-normal text-[#21261B] tracking-tight mb-4">
+              The Re.material Mission
+            </h2>
+            <p class="text-base sm:text-lg text-[#555C47] font-light leading-relaxed max-w-2xl mx-auto">
+              "충남대학교 산학협력단을 시작으로 대덕특구까지 — <br class="hidden sm:inline" />
+              대전·충청권 기술 스타트업의 든든한 소재 마케팅 파트너로 정주합니다."
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-6 pt-6 border-t border-[#E5DECD] text-xs text-[#5D6551]">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F3EDE2] border border-[#DDD5C2] font-medium">
+                <i data-lucide="school" class="w-3.5 h-3.5 text-[#738058]"></i> 충남대학교 산학협력단
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F3EDE2] border border-[#DDD5C2] font-medium">
+                <i data-lucide="building-2" class="w-3.5 h-3.5 text-[#738058]"></i> 대덕연구개발특구
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F3EDE2] border border-[#DDD5C2] font-medium">
+                <i data-lucide="compass" class="w-3.5 h-3.5 text-[#738058]"></i> 대전창조경제혁신센터
+              </span>
+            </div>
+          </div>
+
+          <!-- 3 Stages -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
+            <!-- Stage 1 -->
+            <div class="bg-[#EFE9DD] rounded-3xl p-6 sm:p-8 border-2 border-[#262B20] shadow-xl flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <span class="font-serif-luxury text-3xl font-light text-[#7C856B]">01</span>
+                  <span class="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-[#293021] text-white">
+                    현재 진행 중
+                  </span>
+                </div>
+                <span class="text-xs uppercase tracking-widest text-[#7B836C] font-semibold block mb-1">
+                  1단계 : 초기 고객 확보
+                </span>
+                <h3 class="font-serif-luxury text-xl sm:text-2xl text-[#1E2319] font-medium mb-3">
+                  충남대학교 산학협력단 거점 발굴
+                </h3>
+
+                <div class="bg-[#FAF7F2] p-3 rounded-2xl border border-[#E1D8C6] mb-4">
+                  <span class="text-[11px] text-[#7E8670] block font-medium">주요 타겟:</span>
+                  <p class="text-xs text-[#2F3425] font-medium leading-snug">
+                    충남대 산학협력단 입주 창업동아리, 학생 창업팀, 바이오/화장품 가족기업
+                  </p>
+                </div>
+
+                <ul class="space-y-2 mb-6 text-xs text-[#4F5644] leading-relaxed">
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#778559] shrink-0 mt-0.5"></i>
+                    <span>신소재(친환경 원료, 바이오 폴리머) 적용 신규 런칭 팀 발굴</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#778559] shrink-0 mt-0.5"></i>
+                    <span>동문 네트워크 활용 "1장 Before & After 번역 리포트" 무료 제안</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#778559] shrink-0 mt-0.5"></i>
+                    <span>공학도 출신 대표들의 언어 장벽을 해결하는 '아하 모먼트' 선사</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="pt-4 border-t border-[#DFD6C3]">
+                <span class="text-[11px] text-[#7A836D] block font-medium">기대 성과 & 마일스톤</span>
+                <p class="text-xs font-semibold text-[#252A1D] mt-0.5">
+                  초기 5~10개 타겟 기업 무료 리포트 발급 및 1~2건의 유료 전환 성사
+                </p>
+              </div>
+            </div>
+
+            <!-- Stage 2 -->
+            <div class="bg-[#F4F0E8] rounded-3xl p-6 sm:p-8 border border-[#E2D9C7] hover:border-[#BFC6A8] hover:bg-[#F0EBE0] transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <span class="font-serif-luxury text-3xl font-light text-[#7C856B]">02</span>
+                  <span class="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-[#899468] text-white">
+                    차기 추진 단계
+                  </span>
+                </div>
+                <span class="text-xs uppercase tracking-widest text-[#7B836C] font-semibold block mb-1">
+                  2단계 : 포트폴리오 구축
+                </span>
+                <h3 class="font-serif-luxury text-xl sm:text-2xl text-[#1E2319] font-medium mb-3">
+                  충남대 대표 성공 레퍼런스 확립
+                </h3>
+
+                <div class="bg-[#FAF7F2] p-3 rounded-2xl border border-[#E1D8C6] mb-4">
+                  <span class="text-[11px] text-[#7E8670] block font-medium">주요 타겟:</span>
+                  <p class="text-xs text-[#2F3425] font-medium leading-snug">
+                    1~2건의 유료 전환 기업 자사몰/크라우드펀딩 런칭 지원
+                  </p>
+                </div>
+
+                <ul class="space-y-2 mb-6 text-xs text-[#4F5644] leading-relaxed">
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#778559] shrink-0 mt-0.5"></i>
+                    <span>자사몰 상세페이지, 인스타 광고 카피, 제품 패키징 전담 카피라이팅</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#778559] shrink-0 mt-0.5"></i>
+                    <span>와디즈/텀블벅 펀딩 달성률 300% 견인 및 상세페이지 전환율 측정</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#778559] shrink-0 mt-0.5"></i>
+                    <span>"어려운 기술을 라이프스타일 언어로 바꾼 매출 효과" 수치화 리포트</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="pt-4 border-t border-[#DFD6C3]">
+                <span class="text-[11px] text-[#7A836D] block font-medium">기대 성과 & 마일스톤</span>
+                <p class="text-xs font-semibold text-[#252A1D] mt-0.5">
+                  공식 포트폴리오 북 발행 및 충남대 산학협력단 우수 협업 사례 등재
+                </p>
+              </div>
+            </div>
+
+            <!-- Stage 3 -->
+            <div class="bg-[#F4F0E8] rounded-3xl p-6 sm:p-8 border border-[#E2D9C7] hover:border-[#BFC6A8] hover:bg-[#F0EBE0] transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <span class="font-serif-luxury text-3xl font-light text-[#7C856B]">03</span>
+                  <span class="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-[#D3CBB9] text-[#4F5643]">
+                    확장 목표
+                  </span>
+                </div>
+                <span class="text-xs uppercase tracking-widest text-[#7B836C] font-semibold block mb-1">
+                  3단계 : 시장 확장
+                </span>
+                <h3 class="font-serif-luxury text-xl sm:text-2xl text-[#1E2319] font-medium mb-3">
+                  대덕특구 및 대전 스타트업 확장
+                </h3>
+
+                <div class="bg-[#FAF7F2] p-3 rounded-2xl border border-[#E1D8C6] mb-4">
+                  <span class="text-[11px] text-[#7E8670] block font-medium">주요 타겟:</span>
+                  <p class="text-xs text-[#2F3425] font-medium leading-snug">
+                    대전창조경제혁신센터, 대덕특구 내 딥테크/그린소재 스타트업
+                  </p>
+                </div>
+
+                <ul class="space-y-2 mb-6 text-xs text-[#4F5644] leading-relaxed">
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#778559] shrink-0 mt-0.5"></i>
+                    <span>검증된 포트폴리오를 무기로 대덕특구 소재·부품·장비 기업 영업 확장</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#778559] shrink-0 mt-0.5"></i>
+                    <span>대전창경센터 기술 마케팅 공식 파트너 및 멘토링 프로그램 연계</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#778559] shrink-0 mt-0.5"></i>
+                    <span>대전·충청 대표 융복합 "소재 전문 테크 마케팅 에이전시" 도약</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="pt-4 border-t border-[#DFD6C3]">
+                <span class="text-[11px] text-[#7A836D] block font-medium">기대 성과 & 마일스톤</span>
+                <p class="text-xs font-semibold text-[#252A1D] mt-0.5">
+                  월간 리테이너 고객사 10+ 확보 및 기술 스타트업 필수 마케팅 관문 구축
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quote -->
+          <div class="bg-[#EAE4D5] rounded-3xl p-6 sm:p-10 border border-[#DBD2BD] max-w-4xl mx-auto flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
+            <div class="w-16 h-16 rounded-2xl bg-[#282E20] text-[#FAF7F2] flex items-center justify-center shrink-0">
+              <i data-lucide="award" class="w-8 h-8 text-[#C9D4A7]"></i>
+            </div>
+            <div>
+              <h4 class="font-serif-luxury text-lg sm:text-xl font-medium text-[#1E2318] mb-1">
+                "기술의 깊이는 대덕에서, 표현의 감성은 라이프스타일 머티리얼 UX 라이터가 완성합니다."
+              </h4>
+              <p class="text-xs sm:text-sm text-[#59614D] leading-relaxed break-keep text-balance">
+                <span class="inline-block">충남대학교 창업보육센터 및</span> <span class="inline-block">가족기업 협력망을 통해</span> <span class="inline-block">검증된 소재 카피라이팅 프로세스를 바탕으로,</span>
+                <span class="inline-block">대전·충청권 딥테크 기업이</span> <span class="inline-block">글로벌 B2C/B2B 시장에</span> <span class="inline-block">매끄럽게 안착하도록 돕습니다.</span>
+              </p>
+            </div>
+            <button
+              onclick="openReportModal('apply')"
+              class="shrink-0 bg-[#262B1F] hover:bg-black text-[#FAF7F2] text-xs uppercase tracking-wider font-semibold px-6 py-3.5 rounded-full transition-all cursor-pointer whitespace-nowrap"
+            >
+              충남대/대덕특구 신청하기
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Business Model & Upsell Architecture -->
+      <section id="business" class="py-20 lg:py-28 bg-[#F4F0E8] border-t border-[#E5DECD]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EAE3D4] text-[#474F3B] text-xs font-semibold uppercase tracking-wider mb-3">
+              <i data-lucide="trending-up" class="w-3.5 h-3.5 text-[#6B7653]"></i>
+              Business Model & Upsell Architecture
+            </div>
+            <h2 class="font-serif-luxury text-3xl sm:text-4xl lg:text-5xl font-normal text-[#21261B] tracking-tight mb-4">
+              수익화 전략 & 서비스 패키지
+            </h2>
+            <p class="text-sm sm:text-base text-[#616854] font-light leading-relaxed break-keep text-balance max-w-2xl mx-auto">
+              <span class="inline-block">무료 [Before & After 리포트]를 통해</span> <span class="inline-block">소재의 매력적인 컨셉이 확정되면,</span>
+              <span class="inline-block">실제 자사몰 상세페이지와 인스타그램 광고,</span> <span class="inline-block">제품 패키징의 정식 유료 계약으로 원활히 전환됩니다.</span>
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch">
+            <!-- Plan 1: MVP -->
+            <div class="bg-[#FAF7F2] text-[#21261B] border border-[#DDD4C2] hover:shadow-lg rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-[#EFE9DC] text-[#555D48]">
+                    충남대/대덕특구 전용
+                  </span>
+                  <span class="text-xs text-[#7D8570]">최초 1회 한정</span>
+                </div>
+                <h3 class="font-serif-luxury text-2xl font-medium mb-1 text-[#20251A] break-keep">MVP 샘플 리포트</h3>
+                <p class="text-xs mb-6 text-[#69715C] break-keep">신소재 기술 스타트업을 위한 무료 혜택</p>
+                <div class="mb-6 pb-6 border-b border-black/10">
+                  <span class="font-serif-luxury text-3xl sm:text-4xl font-semibold">0원</span>
+                </div>
+                <div class="space-y-3 mb-8 text-xs leading-relaxed">
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-[#6B7952] shrink-0 mt-0.5"></i>
+                    <span class="text-[#3E4534] break-keep">소재 스펙 시트/TDS 정밀 분석</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-[#6B7952] shrink-0 mt-0.5"></i>
+                    <span class="text-[#3E4534] break-keep">3대 컨셉(감성형, 효능강조형, 친환경형) 번역</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-[#6B7952] shrink-0 mt-0.5"></i>
+                    <span class="text-[#3E4534] break-keep">1장짜리 Before & After PDF 요약 리포트</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-[#6B7952] shrink-0 mt-0.5"></i>
+                    <span class="text-[#3E4534] break-keep">대표/마케팅팀 온라인 1:1 컨셉 브리핑 (20분)</span>
+                  </div>
+                </div>
+              </div>
+              <button
+                onclick="openReportModal('apply')"
+                class="w-full py-3.5 px-6 rounded-full text-xs uppercase tracking-wider font-semibold transition-all cursor-pointer flex items-center justify-center gap-2 bg-[#272D20] text-[#FAF7F2] hover:bg-[#151911] shadow"
+              >
+                <span>무료 1장 리포트 신청하기</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+
+            <!-- Plan 2: Launch Package (Popular) -->
+            <div class="bg-[#272D20] text-[#FAF7F2] shadow-2xl border-2 border-[#3C4533] lg:-translate-y-2 rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-[#C7D1A6] text-[#22271C]">
+                    가장 많은 선택
+                  </span>
+                  <span class="text-xs text-[#C9C5B8]">단일 프로젝트 기준</span>
+                </div>
+                <h3 class="font-serif-luxury text-2xl font-medium mb-1 text-[#FAF7F2]">자사몰 & 펀딩 패키지</h3>
+                <p class="text-xs mb-6 text-[#D0CBBF]">정식 제품 런칭을 위한 올인원 카피라이팅</p>
+                <div class="mb-6 pb-6 border-b border-white/15">
+                  <span class="font-serif-luxury text-3xl sm:text-4xl font-semibold">480,000원</span>
+                </div>
+                <div class="space-y-3 mb-8 text-xs leading-relaxed">
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-[#C5CF9F] shrink-0 mt-0.5"></i>
+                    <span class="text-[#ECE8DC]">MVP 리포트 3대 컨셉 중 최종 1~2종 디벨롭</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-[#C5CF9F] shrink-0 mt-0.5"></i>
+                    <span class="text-[#ECE8DC]">자사몰 메인 상세페이지 전체 스토리라인 기획</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-[#C5CF9F] shrink-0 mt-0.5"></i>
+                    <span class="text-[#ECE8DC]">소비자 후킹 헤드카피 8종 & 기술 설명 섹션</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-[#C5CF9F] shrink-0 mt-0.5"></i>
+                    <span class="text-[#ECE8DC]">인스타그램 피드/광고용 카피 6종 제공</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-[#C5CF9F] shrink-0 mt-0.5"></i>
+                    <span class="text-[#ECE8DC]">단상자 및 용기 패키징 인쇄 문안</span>
+                  </div>
+                </div>
+              </div>
+              <button
+                onclick="openReportModal('apply')"
+                class="w-full py-3.5 px-6 rounded-full text-xs uppercase tracking-wider font-semibold transition-all cursor-pointer flex items-center justify-center gap-2 bg-[#FAF7F2] text-[#242A1D] hover:bg-white hover:scale-105 shadow-md"
+              >
+                <span>상세페이지 패키지 상담하기</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+
+            <!-- Plan 3: Retainer -->
+            <div class="bg-[#FAF7F2] text-[#21261B] border border-[#DDD4C2] hover:shadow-lg rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-full bg-[#EFE9DC] text-[#555D48]">
+                    스타트업 전담
+                  </span>
+                  <span class="text-xs text-[#7D8570]">월 구독 (3개월 이상)</span>
+                </div>
+                <h3 class="font-serif-luxury text-2xl font-medium mb-1 text-[#20251A] break-keep whitespace-nowrap">대덕특구 테크 파트너십</h3>
+                <p class="text-xs mb-6 text-[#69715C] break-keep">지속적인 R&D 및 신제품 파이프라인 전담</p>
+                <div class="mb-6 pb-6 border-b border-black/10">
+                  <span class="font-serif-luxury text-3xl sm:text-4xl font-semibold">1,200,000원</span>
+                </div>
+                <div class="space-y-3 mb-8 text-xs leading-relaxed">
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-[#6B7952] shrink-0 mt-0.5"></i>
+                    <span class="text-[#3E4534] break-keep">월 최대 3개 신소재 파이프라인 지속 번역</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-[#6B7952] shrink-0 mt-0.5"></i>
+                    <span class="text-[#3E4534] break-keep">IR 피칭 덱 & 정부지원사업 테크 스토리텔링 감수</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-[#6B7952] shrink-0 mt-0.5"></i>
+                    <span class="text-[#3E4534] break-keep">글로벌 수출용 영문 라이프스타일 테크 카피 지원</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-[#6B7952] shrink-0 mt-0.5"></i>
+                    <span class="text-[#3E4534] break-keep">충남대/대전혁신센터 연계 마케팅 정기 멘토링</span>
+                  </div>
+                </div>
+              </div>
+              <button
+                onclick="openReportModal('apply')"
+                class="w-full py-3.5 px-6 rounded-full text-xs uppercase tracking-wider font-semibold transition-all cursor-pointer flex items-center justify-center gap-2 bg-[#272D20] text-[#FAF7F2] hover:bg-[#151911] shadow"
+              >
+                <span>파트너십 문의하기</span> <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Funnel Diagram -->
+          <div class="mt-16 bg-[#FAF7F2] rounded-3xl p-6 sm:p-8 border border-[#E0D7C4] max-w-4xl mx-auto">
+            <h4 class="font-serif-luxury text-lg font-medium text-center text-[#21261B] mb-6">
+              고객 유입 및 유료 전환(Funnel) 메커니즘
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 text-center">
+              <div class="bg-[#F2EDE2] p-4 rounded-2xl border border-[#DFD6C3]">
+                <div class="text-xs font-bold text-[#A3523E] mb-1">STEP 1</div>
+                <div class="text-xs font-semibold text-[#202519]">연구소 스펙 접수</div>
+                <p class="text-[11px] text-[#636C56] mt-1">TDS / 특허 요약 / 성분표</p>
+              </div>
+              <div class="bg-[#F2EDE2] p-4 rounded-2xl border border-[#DFD6C3]">
+                <div class="text-xs font-bold text-[#6D7751] mb-1">STEP 2</div>
+                <div class="text-xs font-semibold text-[#202519]">무료 1장 리포트</div>
+                <p class="text-[11px] text-[#636C56] mt-1">감성·효능·친환경 3대 번역</p>
+              </div>
+              <div class="bg-[#F2EDE2] p-4 rounded-2xl border border-[#DFD6C3]">
+                <div class="text-xs font-bold text-[#455034] mb-1">STEP 3</div>
+                <div class="text-xs font-semibold text-[#202519]">아하(Aha!) 모먼트</div>
+                <p class="text-[11px] text-[#636C56] mt-1">대표의 확신 & 컨셉 확정</p>
+              </div>
+              <div class="bg-[#272D20] text-white p-4 rounded-2xl shadow-md">
+                <div class="text-xs font-bold text-[#CCD8A7] mb-1">STEP 4</div>
+                <div class="text-xs font-semibold text-white">유료 정식 계약</div>
+                <p class="text-[11px] text-[#D8D4C8] mt-1">상세페이지 · 광고 · 패키징</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Refined Editorial Footer -->
+    <footer class="bg-[#EFEAE0] text-[#292F22] border-t border-[#DFD6C3] pt-16 pb-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-14 pb-14 border-b border-[#D8CEBA]">
+          <div class="md:col-span-5 space-y-4">
+            <div class="font-serif-luxury text-3xl font-normal text-[#1E2319] tracking-tight">
+              Re<span class="italic text-[#728055]">.</span>material
+            </div>
+            <div class="text-xs uppercase tracking-[0.2em] text-[#6E775F] font-medium">
+              Lifestyle Material UX Writing Studio
+            </div>
+            <p class="text-xs sm:text-sm text-[#545C47] leading-relaxed max-w-sm">
+              첨단 소재의 공학적 데이터를 소비자의 심장을 뛰게 하는 언어로 번역합니다.
+              화장품, 의류, 일상용품에 적용된 훌륭한 고분자/신소재 기술이 세상과 가장 다정하게 만나는 접점을 짓습니다.
+            </p>
+            <div class="pt-2 flex items-center gap-3 text-xs text-[#525B45]">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E5DEC9] font-medium">
+                <i data-lucide="school" class="w-3.5 h-3.5 text-[#6D7A51]"></i> 충남대학교 산학협력단 거점
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E5DEC9] font-medium">
+                <i data-lucide="building-2" class="w-3.5 h-3.5 text-[#6D7A51]"></i> 대덕특구 연계
+              </span>
+            </div>
+          </div>
+
+          <div class="md:col-span-3 space-y-3">
+            <h4 class="text-xs uppercase tracking-widest font-semibold text-[#1C2016]">서비스 내비게이션</h4>
+            <ul class="space-y-2 text-xs text-[#525A45]">
+              <li><a href="#about" class="hover:text-black transition-colors">서비스 개요 (Value Proposition)</a></li>
+              <li><a href="#cases" class="hover:text-black transition-colors">소재 번역 쇼케이스 (Before & After)</a></li>
+              <li><a href="#concepts" class="hover:text-black transition-colors">3대 맞춤형 번역 컨셉</a></li>
+              <li><a href="#translator" class="hover:text-black transition-colors">소재 스펙 즉석 시뮬레이터</a></li>
+              <li><a href="#roadmap" class="hover:text-black transition-colors">대전 정주 & 대덕특구 로드맵</a></li>
+              <li><a href="#business" class="hover:text-black transition-colors">수익화(Upsell) 패키지</a></li>
+            </ul>
+          </div>
+
+          <div class="md:col-span-4 space-y-3">
+            <h4 class="text-xs uppercase tracking-widest font-semibold text-[#1C2016]">지역 거점 및 문의</h4>
+            <div class="space-y-2 text-xs text-[#535C46] leading-relaxed">
+              <div class="flex items-start gap-2">
+                <i data-lucide="map-pin" class="w-4 h-4 text-[#758455] shrink-0 mt-0.5"></i>
+                <span>대전광역시 유성구 대학로 99 충남대학교 산학협력단 인큐베이터 파트너십</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="mail" class="w-4 h-4 text-[#758455] shrink-0"></i>
+                <span>contact@rematerial.ux</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i data-lucide="phone" class="w-4 h-4 text-[#758455] shrink-0"></i>
+                <span>042-821-0000 (대전 충남대 제휴 직통)</span>
+              </div>
+            </div>
+            <div class="pt-3">
+              <button
+                onclick="openReportModal('apply')"
+                class="w-full bg-[#272D20] hover:bg-black text-[#FAF7F2] text-xs uppercase tracking-wider font-semibold py-3 px-5 rounded-full transition-all shadow cursor-pointer text-center"
+              >
+                무료 1장 번역 리포트 신청하기
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#7A826B]">
+          <div>
+            © 2026 Re.material Studio. All rights reserved. 본 웹사이트는 [라이프스타일 머티리얼 UX 라이터] 창직 보고서를 바탕으로 구현된 공식 랜딩페이지입니다.
+          </div>
+          <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="inline-flex items-center gap-1.5 hover:text-[#20251A] transition-colors cursor-pointer">
+            <span>맨 위로 이동</span> <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Interactive 1-Page Report Modal -->
+    <div id="report-modal" class="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-6">
+      <div class="bg-[#FAF7F2] rounded-[2rem] w-full max-w-4xl max-h-[92vh] flex flex-col shadow-2xl border border-[#DED7C6] overflow-hidden my-auto">
+        <!-- Top Bar -->
+        <div class="px-6 py-4 border-b border-[#E3DCcb] bg-[#F4F0E8] flex items-center justify-between shrink-0">
+          <div class="flex items-center gap-3">
+            <span class="font-serif-luxury text-xl font-medium text-[#22271C]">
+              Re<span class="italic text-[#78855A]">.</span>material
+            </span>
+            <span class="text-xs text-[#7A826D] hidden sm:inline">|</span>
+            <span class="text-xs font-semibold text-[#4F5643] hidden sm:inline">1장 Before & After 번역 리포트</span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <div class="bg-[#E7E1D2] p-1 rounded-xl text-xs font-medium flex items-center">
+              <button onclick="switchModalTab('preview')" id="modal-tab-preview" class="px-3 py-1.5 rounded-lg transition-colors cursor-pointer bg-[#292F22] text-[#FAF7F2] shadow-xs">
+                리포트 양식 미리보기
+              </button>
+              <button onclick="switchModalTab('apply')" id="modal-tab-apply" class="px-3 py-1.5 rounded-lg transition-colors cursor-pointer text-[#5A634E] hover:text-black">
+                무료 리포트 신청서
+              </button>
+            </div>
+            <button onclick="closeReportModal()" class="p-2 rounded-full hover:bg-[#EAE3D4] text-[#4A513E] transition-colors cursor-pointer ml-1" aria-label="닫기">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="p-6 sm:p-8 overflow-y-auto flex-1">
+          <!-- View 1: 1-Page Report Sheet -->
+          <div id="modal-view-preview" class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#E3DAC8]">
+              <div>
+                <span class="text-[10px] uppercase tracking-widest font-bold text-[#727D56] bg-[#EDE7D9] px-2.5 py-1 rounded-md">
+                  MVP Demonstration Report • Confirmed
+                </span>
+                <h3 class="font-serif-luxury text-2xl sm:text-3xl font-medium text-[#1E2319] mt-2">
+                  신소재 소비자 언어 번역 리포트 (1-Page)
+                </h3>
+                <p class="text-xs text-[#6B735E]">
+                  발행처: Re.material (라이프스타일 머티리얼 UX 라이터) · 충남대학교 산학협력단 공식 테스트
+                </p>
+              </div>
+
+              <div class="flex items-center gap-2">
+                <button onclick="window.print()" class="inline-flex items-center gap-1.5 text-xs font-medium bg-[#EAE4D5] hover:bg-[#E0D8C6] text-[#292E21] px-3.5 py-2 rounded-full transition-colors cursor-pointer">
+                  <i data-lucide="printer" class="w-3.5 h-3.5"></i> <span>인쇄 / PDF 저장</span>
+                </button>
+                <button onclick="switchModalTab('apply')" class="inline-flex items-center gap-1.5 text-xs font-semibold bg-[#262C1F] hover:bg-black text-[#FAF7F2] px-4 py-2 rounded-full transition-all cursor-pointer shadow-sm">
+                  <i data-lucide="send" class="w-3.5 h-3.5"></i> <span>우리 소재도 신청하기</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Printable Sheet Area -->
+            <div id="print-report-container" class="bg-white rounded-2xl p-6 sm:p-8 border border-[#DDD5C2] shadow-sm space-y-6 text-[#202519]">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs p-3.5 bg-[#FAF8F5] rounded-xl border border-[#EDE7D9]">
+                <div>
+                  <span class="text-[10px] text-[#7A826B] block">의뢰 기업명</span>
+                  <strong id="modal-report-company" class="font-medium text-[#22271C]">에코바이오랩스 (충남대 가족기업)</strong>
+                </div>
+                <div>
+                  <span class="text-[10px] text-[#7A826B] block">적용 카테고리</span>
+                  <strong id="modal-report-category" class="font-medium text-[#22271C]">더마 · 스킨케어</strong>
+                </div>
+                <div>
+                  <span class="text-[10px] text-[#7A826B] block">소재 명칭</span>
+                  <strong id="modal-report-title" class="font-medium text-[#22271C]">해조류 유래 고분자 하이드로겔 바</strong>
+                </div>
+                <div>
+                  <span class="text-[10px] text-[#7A826B] block">지역 거점</span>
+                  <strong class="font-medium text-[#22271C]">충남대학교 산학협력단 / 대덕특구</strong>
+                </div>
+              </div>
+
+              <!-- Before -->
+              <div class="rounded-xl p-4 bg-[#F7F3EB] border border-[#E5DECE]">
+                <div class="flex items-center gap-2 mb-1.5">
+                  <span class="w-2 h-2 rounded-full bg-[#AF5541]"></span>
+                  <h4 class="text-xs font-bold uppercase tracking-wider text-[#A04A36]">[Before] 연구소 공학 데이터 & 기술 스펙 (TDS)</h4>
+                </div>
+                <p id="modal-report-raw" class="text-xs font-mono text-[#4A523E] leading-relaxed">
+                  "Fucus vesiculosus에서 추출한 분자량 120kDa의 다당류 하이드로콜로이드. 점도 4,800 cP, In-vitro TEWL(경피 수분 손실) 저감률 42.8%, 다가의 Ca2+ 양이온과 킬레이트 결합 구조체."
+                </p>
+                <div class="mt-2 text-[11px] text-[#78816B] bg-white/70 p-2 rounded border border-[#E3D9C7]">
+                  <strong>문제점 진단:</strong> 고분자 화학 용어와 수치는 일반 소비자의 호기심을 유발하지 못하며, 상세페이지 이탈률을 높이는 주된 원인입니다.
+                </div>
+              </div>
+
+              <!-- After 3 concepts -->
+              <div>
+                <div class="flex items-center gap-2 mb-3">
+                  <i data-lucide="sparkles" class="w-4 h-4 text-[#758455]"></i>
+                  <h4 class="text-xs font-bold uppercase tracking-wider text-[#4E5A37]">[After] 3대 소비자 경험(UX) 언어 재해석</h4>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <!-- Emotional -->
+                  <div class="p-4 rounded-xl bg-[#FAF8F5] border-2 border-[#D8CEBC] flex flex-col justify-between">
+                    <div>
+                      <span class="text-[10px] font-bold text-[#867560] uppercase tracking-wider block mb-1">01. 감성형 (Emotional)</span>
+                      <h5 id="modal-report-emo-head" class="font-serif-luxury text-sm font-semibold text-[#1C2016] mb-2 leading-snug">
+                        "바다가 건네는 72시간의 깊은 수분 숨결"
+                      </h5>
+                      <p id="modal-report-emo-body" class="text-xs text-[#525A45] leading-relaxed">
+                        세안을 마친 후에도 피부가 당기지 않는 이유. 깊은 바다의 해조류가 피부 틈새를 촉촉한 이슬로 감싸 안아줍니다.
+                      </p>
+                    </div>
+                    <div class="mt-3 pt-2 border-t border-[#E8E1D3] text-[10px] text-[#7A826D]">
+                      적용: 감성 뷰티, 인디 브랜드 자사몰 헤더
+                    </div>
+                  </div>
+
+                  <!-- Efficacy -->
+                  <div class="p-4 rounded-xl bg-[#FAF8F5] border-2 border-[#C8D1B4] flex flex-col justify-between">
+                    <div>
+                      <span class="text-[10px] font-bold text-[#4D5A38] uppercase tracking-wider block mb-1">02. 효능형 (Efficacy)</span>
+                      <h5 id="modal-report-eff-head" class="font-serif-luxury text-sm font-semibold text-[#1C2016] mb-2 leading-snug">
+                        "수분 증발 저감률 42.8%가 증명하는 피부 방패막"
+                      </h5>
+                      <p id="modal-report-eff-body" class="text-xs text-[#525A45] leading-relaxed">
+                        천연 고분자 그물망이 세안 직후 증발하는 수분을 강력히 붙잡아둡니다. 72시간 수분 잠금 효과.
+                      </p>
+                    </div>
+                    <div class="mt-3 pt-2 border-t border-[#E8E1D3] text-[10px] text-[#7A826D]">
+                      적용: 기능성 더마, 와디즈 테크 스토리
+                    </div>
+                  </div>
+
+                  <!-- Eco -->
+                  <div class="p-4 rounded-xl bg-[#FAF8F5] border-2 border-[#B9C69D] flex flex-col justify-between">
+                    <div>
+                      <span class="text-[10px] font-bold text-[#5B6D43] uppercase tracking-wider block mb-1">03. 친환경형 (Eco-Conscious)</span>
+                      <h5 id="modal-report-eco-head" class="font-serif-luxury text-sm font-semibold text-[#1C2016] mb-2 leading-snug">
+                        "해양 생태계를 존중하는 무해한 바다의 선물"
+                      </h5>
+                      <p id="modal-report-eco-body" class="text-xs text-[#525A45] leading-relaxed">
+                        버려지는 해조 부산물을 업사이클링하여 인공 경화제 없이 완성했습니다. 물과 흙으로 온전히 환원됩니다.
+                      </p>
+                    </div>
+                    <div class="mt-3 pt-2 border-t border-[#E8E1D3] text-[10px] text-[#7A826D]">
+                      적용: 클린 뷰티, ESG 친환경 패키징 문안
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Next step upsell -->
+              <div class="p-4 bg-[#F2EDE2] rounded-xl border border-[#DFD6C3] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+                <div>
+                  <strong class="text-[#202518] block font-semibold">💡 다음 단계 추천 (유료 전환 패키지):</strong>
+                  <span class="text-[#555E47]">
+                    위 3대 컨셉 중 주력 타겟을 확정하시면, <strong>[자사몰 풀 상세페이지 + 인스타그램 훅 카피 6종 + 패키징 문구]</strong> 정식 작업으로 이어집니다.
+                  </span>
+                </div>
+                <button onclick="switchModalTab('apply')" class="shrink-0 bg-[#272D20] text-white px-4 py-2 rounded-full font-semibold cursor-pointer hover:bg-black transition-colors">
+                  정식 견적 상담
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- View 2: Application Form -->
+          <div id="modal-view-apply" class="hidden">
+            <div id="form-container">
+              <form id="free-report-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                <div>
+                  <span class="text-[11px] uppercase tracking-widest text-[#778065] font-semibold block mb-1">
+                    Free MVP Translation Report
+                  </span>
+                  <h3 class="font-serif-luxury text-2xl sm:text-3xl font-normal text-[#1E2319]">
+                    무료 1장 Before & After 번역 리포트 신청
+                  </h3>
+                  <p class="text-xs sm:text-sm text-[#5D6550] mt-1 leading-relaxed">
+                    소재 스펙 시트나 성분표 한 줄만 남겨주세요. 3가지 컨셉으로 재해석한 맞춤 리포트를 무료로 제공해 드립니다.
+                  </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="text-xs font-semibold text-[#2C3122] block mb-1">기업명 / 브랜드명 *</label>
+                    <input
+                      type="text"
+                      id="form-company"
+                      required
+                      value="충남대 바이오 창업팀"
+                      placeholder="예: 충남대 그린바이오랩"
+                      class="w-full text-xs p-3 rounded-xl bg-white border border-[#DDD5C2] text-[#22271C] focus:outline-none focus:ring-1 focus:ring-[#758455]"
+                    />
+                  </div>
+                  <div>
+                    <label class="text-xs font-semibold text-[#2C3122] block mb-1">대표자/담당자 성함 *</label>
+                    <input
+                      type="text"
+                      id="form-name"
+                      required
+                      value="김대표"
+                      placeholder="예: 홍길동 대표"
+                      class="w-full text-xs p-3 rounded-xl bg-white border border-[#DDD5C2] text-[#22271C] focus:outline-none focus:ring-1 focus:ring-[#758455]"
+                    />
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="text-xs font-semibold text-[#2C3122] block mb-1">결과 리포트 수신 이메일 *</label>
+                    <input
+                      type="email"
+                      id="form-email"
+                      required
+                      value="ceo@startup.cnu.ac.kr"
+                      placeholder="ceo@startup.kr"
+                      class="w-full text-xs p-3 rounded-xl bg-white border border-[#DDD5C2] text-[#22271C] focus:outline-none focus:ring-1 focus:ring-[#758455]"
+                    />
+                  </div>
+                  <div>
+                    <label class="text-xs font-semibold text-[#2C3122] block mb-1">연락처 / 휴대폰 *</label>
+                    <input
+                      type="tel"
+                      id="form-phone"
+                      required
+                      value="010-8210-9900"
+                      placeholder="010-0000-0000"
+                      class="w-full text-xs p-3 rounded-xl bg-white border border-[#DDD5C2] text-[#22271C] focus:outline-none focus:ring-1 focus:ring-[#758455]"
+                    />
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="text-xs font-semibold text-[#2C3122] block mb-1">제품 분야 / 카테고리</label>
+                    <select
+                      id="form-category"
+                      class="w-full text-xs p-3 rounded-xl bg-white border border-[#DDD5C2] text-[#22271C] focus:outline-none focus:ring-1 focus:ring-[#758455]"
+                    >
+                      <option value="화장품 · 스킨케어">화장품 · 스킨케어 (클린뷰티/더마)</option>
+                      <option value="패션의류 · 잡화">패션의류 · 잡화 (비건레더/기능성)</option>
+                      <option value="리빙 · 식기 · 주방">리빙 · 식기 · 주방용품 (PLA/바이오)</option>
+                      <option value="욕실 · 제로웨이스트">욕실 · 제로웨이스트 (셀룰로오스/친환경)</option>
+                      <option value="기타 첨단소재">기타 신소재 · 바이오 신소재</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="text-xs font-semibold text-[#2C3122] block mb-1">소속 거점 / 산학 연계</label>
+                    <select
+                      id="form-affiliation"
+                      class="w-full text-xs p-3 rounded-xl bg-white border border-[#DDD5C2] text-[#22271C] focus:outline-none focus:ring-1 focus:ring-[#758455]"
+                    >
+                      <option value="충남대학교 산학협력단 / 가족기업">충남대학교 산학협력단 / 입주기업 / 가족기업</option>
+                      <option value="충남대학교 학생 창업동아리 / 동문 기업">충남대학교 학생 창업동아리 / 동문 창업</option>
+                      <option value="대덕연구개발특구 입주 스타트업">대덕연구개발특구 입주 스타트업</option>
+                      <option value="대전창조경제혁신센터 보육기업">대전창조경제혁신센터 보육기업</option>
+                      <option value="대전/충청권 일반 기술 스타트업">대전/충청권 일반 기술 스타트업</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="text-xs font-semibold text-[#2C3122] block mb-1">소재명 및 기술 설명 / 스펙 원문 *</label>
+                  <textarea
+                    id="form-spec"
+                    required
+                    rows="3"
+                    placeholder="연구소 성분표, TDS 문서의 기술 내용, 또는 특허 핵심 키워드를 복사해 넣어주세요."
+                    class="w-full text-xs p-3 rounded-xl bg-white border border-[#DDD5C2] text-[#22271C] focus:outline-none focus:ring-1 focus:ring-[#758455]"
+                  >갈조류 추출 후코이단-알긴산 가교 매트릭스. 점도 4,800 cP, 경피 수분 손실 저감 42.8% 측정.</textarea>
+                </div>
+
+                <div>
+                  <label class="text-xs font-semibold text-[#2C3122] block mb-1.5">가장 관심 있는 소비자 번역 컨셉</label>
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                    <button type="button" onclick="setFormTone('all')" id="btn-tone-all" class="p-2.5 rounded-xl border border-[#292F22] bg-[#292F22] text-white font-semibold text-center cursor-pointer">
+                      3종 모두 비교 (권장)
+                    </button>
+                    <button type="button" onclick="setFormTone('emotional')" id="btn-tone-emotional" class="p-2.5 rounded-xl border border-[#DDD5C2] bg-white text-[#4A513E] hover:bg-[#F3EDE2] text-center cursor-pointer">
+                      감성형
+                    </button>
+                    <button type="button" onclick="setFormTone('efficacy')" id="btn-tone-efficacy" class="p-2.5 rounded-xl border border-[#DDD5C2] bg-white text-[#4A513E] hover:bg-[#F3EDE2] text-center cursor-pointer">
+                      효능강조형
+                    </button>
+                    <button type="button" onclick="setFormTone('eco')" id="btn-tone-eco" class="p-2.5 rounded-xl border border-[#DDD5C2] bg-white text-[#4A513E] hover:bg-[#F3EDE2] text-center cursor-pointer">
+                      친환경형
+                    </button>
+                  </div>
+                </div>
+
+                <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
+                  <span class="text-[11px] text-[#717964]">
+                    🔒 입력하신 기술 정보는 오직 번역 리포트 작성 목적으로만 사용되며 비밀이 보장됩니다.
+                  </span>
+                  <button
+                    type="submit"
+                    class="w-full sm:w-auto bg-[#262B1F] hover:bg-black text-[#FAF7F2] font-semibold text-xs uppercase tracking-wider px-8 py-3.5 rounded-full transition-all shadow-md cursor-pointer flex items-center justify-center gap-2"
+                  >
+                    <span>1장 번역 리포트 무료 신청하기</span> <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Success message -->
+            <div id="form-success" class="hidden text-center py-12 px-4 space-y-4">
+              <div class="w-16 h-16 rounded-full bg-[#E5ECD3] text-[#4E5C34] flex items-center justify-center mx-auto shadow-sm">
+                <i data-lucide="check" class="w-8 h-8"></i>
+              </div>
+              <h3 class="font-serif-luxury text-2xl sm:text-3xl text-[#1E2319] font-medium">
+                무료 번역 리포트 신청이 완료되었습니다!
+              </h3>
+              <p class="text-sm text-[#5C644E] max-w-md mx-auto leading-relaxed">
+                입력해주신 기술 스펙을 바탕으로 <strong>[감성형 · 효능형 · 친환경형 1장 리포트]</strong>를 제작하여 24시간 이내에 입력하신 이메일로 발송해 드립니다.
+              </p>
+              <div class="pt-4 flex justify-center gap-3">
+                <button
+                  onclick="switchModalTab('preview')"
+                  class="bg-[#262C1F] hover:bg-black text-[#FAF7F2] text-xs uppercase tracking-wider font-semibold px-6 py-3 rounded-full cursor-pointer"
+                >
+                  작성된 리포트 양식 확인하기
+                </button>
+                <button
+                  onclick="closeReportModal()"
+                  class="bg-[#EAE4D5] hover:bg-[#DDD5C3] text-[#292F21] text-xs font-medium px-5 py-3 rounded-full cursor-pointer"
+                >
+                  창 닫기
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Benchmark Template Comparison Modal -->
+    <div id="template-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
+      <div class="bg-[#FAF7F2] rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col border border-[#D5CDBD] shadow-2xl">
+        <div class="p-4 border-b border-[#E3DAC8] flex items-center justify-between bg-[#F2EDE2]">
+          <div>
+            <h4 class="font-serif-luxury text-lg font-medium text-[#20251A]">
+              벤치마킹 원본 디자인: Wix Re.vert Template
+            </h4>
+            <p class="text-[11px] text-[#69725C]">
+              업로드해주신 샘플 홈페이지 이미지 (/public/assets/aistudio/The_30__Best_Free_Wix_Templates__2026__caa88620.jpg)
+            </p>
+          </div>
+          <button onclick="closeTemplateModal()" class="p-1.5 rounded-full hover:bg-[#E3DCcb] text-[#3D4434] transition-colors cursor-pointer">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+        <div class="p-4 overflow-y-auto flex-1 flex justify-center bg-[#292F22]">
+          <img
+            src="/assets/aistudio/The_30__Best_Free_Wix_Templates__2026__caa88620.jpg"
+            alt="Benchmark Wix Template Re.vert"
+            class="max-h-[75vh] w-auto object-contain rounded-lg shadow-md"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Buttons -->
+    <div class="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2">
+      <button
+        onclick="openTemplateModal()"
+        class="bg-[#FAF7F2]/90 hover:bg-white text-[#292E21] border border-[#DDD5C2] shadow-lg px-3.5 py-2 rounded-full text-xs font-medium flex items-center gap-1.5 transition-all hover:scale-105 backdrop-blur-md cursor-pointer"
+        title="벤치마킹 샘플 템플릿(Wix Re.vert) 원본 보기"
+      >
+        <i data-lucide="image" class="w-3.5 h-3.5 text-[#6D7A51]"></i>
+        <span>샘플 템플릿 원본 비교</span>
+      </button>
+
+      <button
+        onclick="openReportModal('apply')"
+        class="bg-[#242A1D] hover:bg-black text-[#FAF7F2] shadow-xl px-4 py-3 rounded-full text-xs uppercase tracking-wider font-semibold flex items-center gap-2 transition-all hover:scale-105 cursor-pointer"
+      >
+        <i data-lucide="file-text" class="w-4 h-4 text-[#C9D4A7]"></i>
+        <span>무료 1장 리포트 신청</span>
+      </button>
+    </div>
+
+    <!-- Integrated Interactive Logic Script -->
+    <script>
+      // Initialize Lucide Icons
+      document.addEventListener('DOMContentLoaded', () => {
+        lucide.createIcons();
+      });
+
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+      }
+
+      // 4-Card Case Switcher Data
+      const caseData = {
+        'case-1': {
+          before: {
+            title: '공학 스펙 데이터 (Before)',
+            color: '#A15843',
+            text: '비-석유계 L-락타이드 단량체 축중합 열가소성 폴리에스터',
+            badge: '열변형 118℃ / 투과율 91.5%',
+          },
+          emo: {
+            title: '소비자 UX 카피 (감성형)',
+            color: '#8E7E6A',
+            headline: '아침 햇살이 투명하게 머무는 테이블 위의 쉼표',
+            body: '무겁고 차가운 유리 대신, 사탕수수의 다정한 온기를 품었습니다. 빛을 담아내는 맑은 투명함으로 일상의 단정한 여유를 전합니다.',
+          },
+          eff: {
+            title: '소비자 UX 카피 (효능형)',
+            color: '#4A5538',
+            headline: '118℃ 뜨거운 음료에도 왜곡 없는 크리스탈 내열성',
+            body: '환경호르몬(BPA) 무검출 테스트 완료. 뜨거운 커피부터 냉동까지 깨질 걱정 없이 91.5%의 유리 같은 선명도를 즐기세요.',
+          },
+          eco: {
+            title: '소비자 UX 카피 (친환경)',
+            color: '#6D7751',
+            headline: '사탕수수에서 태어나 자연으로 돌아가는 180일',
+            body: '석유 한 방울 섞이지 않은 100% 식물성 소재. 다 쓴 뒤 자연에 묻히면 미세플라스틱 없이 물과 흙으로 깨끗이 환원됩니다.',
+          },
+        },
+        'case-2': {
+          before: {
+            title: '공학 스펙 데이터 (Before)',
+            color: '#A15843',
+            text: '갈조류 추출 알긴산-후코이단 가교 결합 매트릭스',
+            badge: '점도 4,800 cP / TEWL 저감 42.8%',
+          },
+          emo: {
+            title: '소비자 UX 카피 (감성형)',
+            color: '#8E7E6A',
+            headline: '바다가 건네는 72시간의 깊은 수분 숨결',
+            body: '세안을 마친 후에도 피부가 당기지 않는 이유. 깊은 바다의 해조류가 피부 틈새를 촉촉한 이슬로 감싸 안아줍니다.',
+          },
+          eff: {
+            title: '소비자 UX 카피 (효능형)',
+            color: '#4A5538',
+            headline: '수분 증발 저감률 42.8%가 증명하는 피부 방패막',
+            body: '천연 고분자 그물망이 세안 직후 증발하는 수분을 강력히 붙잡아둡니다. 피부과 테스트로 입증된 72시간 수분 잠금.',
+          },
+          eco: {
+            title: '소비자 UX 카피 (친환경)',
+            color: '#6D7751',
+            headline: '해양 생태계를 존중하는 무해한 바다의 선물',
+            body: '버려지는 해조 부산물을 업사이클링하여 인공 경화제와 석유계 계면활성제 없이 빚어냈습니다. 수생태계에도 무해합니다.',
+          },
+        },
+        'case-3': {
+          before: {
+            title: '공학 스펙 데이터 (Before)',
+            color: '#A15843',
+            text: '영양 균사체 밀도 1.25g/cm³ 압축 나노섬유 매트릭스',
+            badge: '인장강도 24.3 MPa / 32% 경량화',
+          },
+          emo: {
+            title: '소비자 UX 카피 (감성형)',
+            color: '#8E7E6A',
+            headline: '숲의 고요한 대지가 빚어낸 무결점의 실루엣',
+            body: '손끝에 닿는 순간 느껴지는 유연하고 포근한 온기. 어떠한 생명도 희생하지 않은 채 자연의 결이 모던 라이프를 완성합니다.',
+          },
+          eff: {
+            title: '소비자 UX 카피 (효능형)',
+            color: '#4A5538',
+            headline: '천연 가죽보다 32% 가볍고 찢김 없는 내구성',
+            body: '24.3MPa의 견고한 인장 강도로 스크래치를 방어하며 가벼운 무게로 손목 피로를 덜어줍니다.',
+          },
+          eco: {
+            title: '소비자 UX 카피 (친환경)',
+            color: '#6D7751',
+            headline: '탄소 배출 90% 저감, 톱밥을 먹고 자란 순환 소재',
+            body: '가축 사육이나 유독성 크롬 태닝이 전혀 없습니다. 농업 부산물을 먹고 자라 수명을 다하면 다시 흙으로 돌아갑니다.',
+          },
+        },
+        'case-4': {
+          before: {
+            title: '공학 스펙 데이터 (Before)',
+            color: '#A15843',
+            text: '목재 펄프 유래 친수성 비스코스 미세 다공망 발포체',
+            badge: '흡착량 22배 / 미세플라스틱 0mg',
+          },
+          emo: {
+            title: '소비자 UX 카피 (감성형)',
+            color: '#8E7E6A',
+            headline: '물에 닿는 순간 피어나는 구름 같은 아침 세안',
+            body: '마치 갓 구운 폭신한 빵처럼 물을 머금어 살아납니다. 자극에 지친 얼굴과 몸을 부드럽게 감싸 힐링 샤워를 선물합니다.',
+          },
+          eff: {
+            title: '소비자 UX 카피 (효능형)',
+            color: '#4A5538',
+            headline: '자기 무게의 22배를 빨아들이는 초미세 흡착 기공',
+            body: '180μm 크기의 정밀 미세 홀이 비누 거품을 풍성하게 증폭시키고 노폐물만 섬세하게 닦아내 매끈한 결을 선사합니다.',
+          },
+          eco: {
+            title: '소비자 UX 카피 (친환경)',
+            color: '#6D7751',
+            headline: '하수구로 흘러가는 미세플라스틱 0%의 확신',
+            body: '석유 스펀지 대신 순수 나무 펄프로 빚었습니다. 다 쓰고 화분에 묻으면 식물의 거름이 됩니다.',
+          },
+        },
+      };
+
+      function switchCaseTone(caseId, tone) {
+        ['before', 'emo', 'eff', 'eco'].forEach((t) => {
+          const btn = document.getElementById(`btn-${caseId}-${t}`);
+          if (btn) {
+            if (t === tone) {
+              btn.className = 'flex-1 py-1 rounded-lg text-center font-semibold bg-[#2B3023] text-white shadow-xs';
+            } else {
+              btn.className = 'flex-1 py-1 rounded-lg text-center hover:text-black';
+            }
+          }
+        });
+
+        const target = caseData[caseId][tone];
+        const contentDiv = document.getElementById(`content-${caseId}`);
+        if (tone === 'before') {
+          contentDiv.innerHTML = `
+            <div>
+              <div class="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-[#A15843] font-bold mb-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#A15843]"></span> ${target.title}
+              </div>
+              <p class="text-[11px] font-mono text-[#4C5340] leading-snug">${target.text}</p>
+              <div class="mt-2 text-[10px] bg-[#F1EADF] text-[#69705B] px-2 py-0.5 rounded font-mono inline-block">
+                ${target.badge}
+              </div>
+            </div>
+          `;
+        } else {
+          contentDiv.innerHTML = `
+            <div>
+              <div class="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-[#57643E] font-bold mb-1">
+                <i data-lucide="sparkles" class="w-3 h-3 text-[#798858] inline"></i> ${target.title}
+              </div>
+              <h4 class="font-serif-luxury text-xs sm:text-sm font-semibold text-[#1F231A] leading-snug mb-1">
+                ${target.headline}
+              </h4>
+              <p class="text-[11px] text-[#555C47] leading-relaxed line-clamp-2">
+                ${target.body}
+              </p>
+            </div>
+          `;
+          lucide.createIcons();
+        }
+      }
+
+      // Concept Showcase Inspector
+      const conceptsData = {
+        emotional: {
+          title: '감성형 (Emotional Lifestyle)',
+          target: '인디 뷰티, 감성 홈케어, 킨포크 무드의 라이프웨어 브랜드',
+          direction: '공학적 공식을 피부의 감촉과 일상의 휴식 경험으로 전환하여 소비자가 자신을 위한 선물로 느끼게 만듭니다.',
+          headline: '"손끝에 닿는 순간, 오늘 하루 쌓인 긴장이 조용히 녹아내립니다."',
+          body: '바다가 품은 깊은 미네랄과 해조류 추출물이 피부 위에 맑은 수분 막을 형성해, 하루 종일 건조할 틈 없는 편안함을 안겨줍니다.',
+        },
+        efficacy: {
+          title: '효능강조형 (High Efficacy & Performance)',
+          target: '더마코스메틱, 기능성 테크웨어, 고성능 리빙 기어',
+          direction: '논문 속 TEWL 수치 및 흡착 데이터를 1초 만에 납득하는 객관적인 성능 증명으로 재구성합니다.',
+          headline: '"피부 수분 손실 저감 42.8% 입증, 72시간 붕괴 없는 보습 장벽."',
+          body: '분자량 120kDa 정밀 가교 결합 매트릭스가 표피 층에 3차원 수분 그물망을 형성하여 외부 유해 환경으로부터 피부를 완벽히 보호합니다.',
+        },
+        eco: {
+          title: '친환경강조형 (Eco-Conscious & Zero-Waste)',
+          target: '클린 뷰티, 제로웨이스트 라이프, ESG 가치 소비 브랜드',
+          direction: '생분해 주기, 업사이클링 원료, 플라스틱 프리 인증을 진정성 있는 브랜드 스토리로 각인합니다.',
+          headline: '"흙으로 돌아가는 데 걸리는 시간 180일. 쓰레기 없는 일상을 위한 가장 무해한 선택."',
+          body: '미세플라스틱 0g, 화학 용매 없는 친환경 물리적 추출 공법. 사용 후 자연으로 온전히 환원되어 내일의 대지를 살립니다.',
+        },
+      };
+
+      function selectConcept(conceptKey) {
+        ['emotional', 'efficacy', 'eco'].forEach((c) => {
+          const card = document.getElementById(`card-concept-${c}`);
+          if (c === conceptKey) {
+            card.className = 'group relative rounded-3xl overflow-hidden aspect-[3/4] cursor-pointer transition-all duration-500 border-2 border-[#2D3323] shadow-2xl scale-[1.02]';
+          } else {
+            card.className = 'group relative rounded-3xl overflow-hidden aspect-[3/4] cursor-pointer transition-all duration-500 border-2 border-transparent hover:border-[#BFC6A8] hover:shadow-xl';
+          }
+        });
+
+        const data = conceptsData[conceptKey];
+        document.getElementById('inspector-title').textContent = data.title;
+        document.getElementById('inspector-target').textContent = data.target;
+        document.getElementById('inspector-direction').textContent = data.direction;
+        document.getElementById('inspector-headline').textContent = data.headline;
+        document.getElementById('inspector-body').textContent = data.body;
+      }
+
+      // Simulator Presets
+      const simPresets = {
+        hydrogel: {
+          title: '해조류 갈조 추출 다당류 고분자 (화장품)',
+          spec: '갈조류 추출 알긴산-후코이단 가교 결합 매트릭스. 점도 4,800 cP, In-vitro TEWL(경피 수분 손실) 저감률 42.8%, 다가 양이온 킬레이트 결합 구조체.',
+          metric: '점도 4,800 cP · TEWL 저감 42.8%',
+          tones: {
+            emotional: {
+              badge: 'Option 01 : 감성 라이프스타일',
+              headline: '바다가 품은 깊은 이슬, 피부 위에 내려앉는 72시간의 휴식',
+              body: '하루 종일 지치고 메마른 얼굴에 바다가 건네는 다정한 수분 숨결을 채워줍니다. 손끝이 닿는 순간 느껴지는 맑고 투명한 진정.',
+              keywords: ['#바다이슬', '#다정한수분', '#온화한휴식'],
+            },
+            efficacy: {
+              badge: 'Option 02 : 테크니컬 효능 증명',
+              headline: '피부 수분 증발율 42.8% 철벽 방어, 무너지지 않는 3중 고분자 방패',
+              body: '4,800 cP 고점도 천연 매트릭스가 표피 층을 촘촘히 래핑하여 세안 후 수분 증발을 원천 차단합니다. 피부과 임상 시험 확인.',
+              keywords: ['#42.8%차단', '#3중수분장벽', '#임상입증'],
+            },
+            eco: {
+              badge: 'Option 03 : 클린 제로웨이스트',
+              headline: '수생태계를 생각한 해양 업사이클링, 100% 해양 생분해 클린 뷰티',
+              body: '버려지는 해조 부산물을 친환경 추출 공법으로 재해석했습니다. 미세플라스틱과 화학 보존제 없이 자연으로 온전히 돌아갑니다.',
+              keywords: ['#해양업사이클링', '#미세플라스틱0g', '#친환경추출'],
+            },
+          },
+        },
+        leather: {
+          title: '버섯 균사체 바이오 비건 레더 (패션의류)',
+          spec: '영양 균사체 밀도 1.25g/cm³, 인장강도 24.3 MPa 리그닌-키틴 나노 복합체. 크롬 미함유 식물성 배양 시트, 천연 소가죽 대비 32% 경량화.',
+          metric: '인장강도 24.3 MPa · 32% 경량화',
+          tones: {
+            emotional: {
+              badge: 'Option 01 : 감성 라이프스타일',
+              headline: '숲의 고요한 대지가 빚어낸 무결점의 부드러운 실루엣',
+              body: '어떤 생명도 해치지 않고 완성된 가장 우아한 온기. 사용할수록 당신의 체온과 손길에 맞춰 자연스러운 결이 깊어집니다.',
+              keywords: ['#숲의온기', '#자연의결', '#무결점실루엣'],
+            },
+            efficacy: {
+              badge: 'Option 02 : 테크니컬 효능 증명',
+              headline: '천연 가죽보다 32% 가볍고 찢김에 강한 24.3 MPa 나노 내구성',
+              body: '치밀한 균사체 나노네트워크 구조가 매일 마주하는 생활 스크래치와 마모를 막아줍니다. 손목 부담 없는 가벼움을 경험하세요.',
+              keywords: ['#32%경량화', '#24.3MPa내구성', '#생활방수'],
+            },
+            eco: {
+              badge: 'Option 03 : 클린 제로웨이스트',
+              headline: '온실가스 90% 저감, 톱밥을 먹고 자라 대지로 환원되는 생물 순환',
+              body: '가축 사육과 중금속 크롬 무두질이 전혀 없습니다. 수명을 다한 후 흙에 묻으면 유해 물질 없이 깨끗하게 자연으로 돌아갑니다.',
+              keywords: ['#탄소90%저감', '#크롬프리', '#100%생물기반'],
+            },
+          },
+        },
+        biopla: {
+          title: '사탕수수 발효 바이오-PLA 복합체 (리빙/식기)',
+          spec: '비석유계 L-락타이드 축중합 폴리머. 열변형 온도 118℃, 광학 투과율 91.5%, 비스페놀A(BPA) 불검출 및 FDA 21 CFR 인증 적합.',
+          metric: '내열 118℃ · 투과율 91.5% · BPA Free',
+          tones: {
+            emotional: {
+              badge: 'Option 01 : 감성 라이프스타일',
+              headline: '아침 햇살이 투명하게 머무는 단정한 식탁 위의 쉼표',
+              body: '무겁고 차가운 유리 대신, 사탕수수의 다정한 온기를 담았습니다. 매일 아침 차 한 잔을 더 맑고 기분 좋게 완성합니다.',
+              keywords: ['#단정한아침', '#사탕수수온기', '#맑은일상'],
+            },
+            efficacy: {
+              badge: 'Option 02 : 테크니컬 효능 증명',
+              headline: '118℃ 끓는 음료에도 변형 없는 내열성, 깨지지 않는 크리스탈 투명도',
+              body: '환경호르몬(BPA) 0% 검증. 뜨거운 커피부터 식기세척기 살균까지, 아이가 있는 집에서도 안심하고 매일 사용합니다.',
+              keywords: ['#118도내열', '#BPAFree', '#식기세척기안전'],
+            },
+            eco: {
+              badge: 'Option 03 : 클린 제로웨이스트',
+              headline: '석유 0%, 사탕수수에서 태어나 180일 만에 자연으로 돌아가는 약속',
+              body: '재생 가능한 식물성 바이오매스 100%. 산업 퇴비화 조건에서 미세플라스틱을 남기지 않고 깨끗한 흙과 물로 분해됩니다.',
+              keywords: ['#식물성100%', '#180일퇴비화', '#플라스틱제로'],
+            },
+          },
+        },
+      };
+
+      let currentSimPresetKey = 'hydrogel';
+      let currentSimTone = 'emotional';
+      let isCustomSim = false;
+
+      function setTranslatorPreset(presetKey) {
+        ['hydrogel', 'leather', 'biopla', 'custom'].forEach((k) => {
+          const btn = document.getElementById(`btn-pre-${k}`);
+          if (k === presetKey) {
+            btn.className = 'px-4 sm:px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all cursor-pointer bg-[#272D20] text-[#FAF7F2] shadow-md scale-105';
+          } else {
+            btn.className = 'px-4 sm:px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition-all cursor-pointer bg-[#FAF7F2] text-[#4D5442] hover:bg-white border border-[#DDD5C2]';
+          }
+        });
+
+        if (presetKey === 'custom') {
+          isCustomSim = true;
+          document.getElementById('sim-material-title').textContent = '사용자 등록 신소재';
+          document.getElementById('sim-spec-display-area').classList.add('hidden');
+          document.getElementById('sim-custom-input-area').classList.remove('hidden');
+        } else {
+          isCustomSim = false;
+          currentSimPresetKey = presetKey;
+          const data = simPresets[presetKey];
+          document.getElementById('sim-material-title').textContent = data.title;
+          document.getElementById('sim-spec-text').textContent = `"${data.spec}"`;
+          document.getElementById('sim-spec-metric').textContent = data.metric;
+          document.getElementById('sim-spec-display-area').classList.remove('hidden');
+          document.getElementById('sim-custom-input-area').classList.add('hidden');
+          updateSimOutput();
+        }
+      }
+
+      function switchSimTone(tone) {
+        currentSimTone = tone;
+        ['emotional', 'efficacy', 'eco'].forEach((t) => {
+          const btn = document.getElementById(`btn-sim-${t}`);
+          if (t === tone) {
+            btn.className = 'px-3 py-1.5 rounded-lg transition-all cursor-pointer bg-[#292E21] text-white shadow-xs font-semibold';
+          } else {
+            btn.className = 'px-3 py-1.5 rounded-lg transition-all cursor-pointer text-[#565D48] hover:text-black';
+          }
+        });
+        updateSimOutput();
+      }
+
+      function updateSimOutput() {
+        const preset = simPresets[currentSimPresetKey] || simPresets['hydrogel'];
+        const toneData = preset.tones[currentSimTone];
+
+        document.getElementById('sim-badge').textContent = toneData.badge;
+        document.getElementById('sim-output-headline').textContent = toneData.headline;
+        document.getElementById('sim-output-body').textContent = toneData.body;
+
+        const kwContainer = document.getElementById('sim-keywords');
+        kwContainer.innerHTML = toneData.keywords
+          .map((kw) => `<span class="text-[11px] font-medium bg-[#EFE9DB] text-[#5A634E] px-2.5 py-1 rounded-md">${kw}</span>`)
+          .join('');
+      }
+
+      function onCustomSpecInput() {
+        const val = document.getElementById('sim-custom-textarea').value.trim();
+        if (val.length > 5) {
+          document.getElementById('sim-output-headline').textContent = `"${val.substring(0, 30)}... 에서 시작되는 혁신적인 감각"`;
+          document.getElementById('sim-output-body').textContent = `연구실에서 탄생한 특별한 원료 기술을 소비자의 일상 속 가장 매력적인 사용 경험으로 완성합니다.`;
+        }
+      }
+
+      function copySimCopy() {
+        const headline = document.getElementById('sim-output-headline').textContent;
+        const body = document.getElementById('sim-output-body').textContent;
+        navigator.clipboard.writeText(`${headline}\n\n${body}`);
+        const label = document.getElementById('sim-copy-text');
+        label.textContent = '복사 완료!';
+        label.className = 'text-[#5F8745] font-semibold';
+        setTimeout(() => {
+          label.textContent = '카피 복사';
+          label.className = '';
+        }, 2000);
+      }
+
+      // Modal Logic
+      function openReportModal(tab = 'preview') {
+        const modal = document.getElementById('report-modal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        switchModalTab(tab);
+      }
+
+      function closeReportModal() {
+        const modal = document.getElementById('report-modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+
+      function switchModalTab(tab) {
+        const viewPrev = document.getElementById('modal-view-preview');
+        const viewApply = document.getElementById('modal-view-apply');
+        const tabPrev = document.getElementById('modal-tab-preview');
+        const tabApply = document.getElementById('modal-tab-apply');
+
+        if (tab === 'preview') {
+          viewPrev.classList.remove('hidden');
+          viewApply.classList.add('hidden');
+          tabPrev.className = 'px-3 py-1.5 rounded-lg transition-colors cursor-pointer bg-[#292F22] text-[#FAF7F2] shadow-xs';
+          tabApply.className = 'px-3 py-1.5 rounded-lg transition-colors cursor-pointer text-[#5A634E] hover:text-black';
+        } else {
+          viewPrev.classList.add('hidden');
+          viewApply.classList.remove('hidden');
+          tabApply.className = 'px-3 py-1.5 rounded-lg transition-colors cursor-pointer bg-[#292F22] text-[#FAF7F2] shadow-xs';
+          tabPrev.className = 'px-3 py-1.5 rounded-lg transition-colors cursor-pointer text-[#5A634E] hover:text-black';
+        }
+      }
+
+      function viewCaseReport(caseType) {
+        openReportModal('preview');
+        if (caseType === 'eco-glass') {
+          document.getElementById('modal-report-title').textContent = '바이오 PLA 에코 리유저블 글래스';
+          document.getElementById('modal-report-category').textContent = '식기 · 리빙용품';
+          document.getElementById('modal-report-raw').textContent = '비-석유계 L-락타이드 단량체의 개환 중합 반응을 통해 합성된 열가소성 지방족 폴리에스터. 열변형 118℃, 광학 투과율 91.5%';
+          document.getElementById('modal-report-emo-head').textContent = '"아침 햇살이 투명하게 머무는 테이블 위의 쉼표"';
+          document.getElementById('modal-report-eff-head').textContent = '"118℃ 뜨거운 음료에도 왜곡 없는 크리스탈 내열성"';
+          document.getElementById('modal-report-eco-head').textContent = '"사탕수수에서 태어나 자연으로 온전히 돌아가는 180일"';
+        } else if (caseType === 'seaweed-soap') {
+          document.getElementById('modal-report-title').textContent = '해조류 유래 고분자 하이드로겔 바';
+          document.getElementById('modal-report-category').textContent = '더마 · 스킨케어';
+          document.getElementById('modal-report-raw').textContent = 'Fucus vesiculosus에서 추출한 분자량 120kDa의 다당류 하이드로콜로이드. 점도 4,800 cP, In-vitro TEWL 저감률 42.8%';
+          document.getElementById('modal-report-emo-head').textContent = '"바다가 건네는 72시간의 깊은 수분 숨결"';
+          document.getElementById('modal-report-eff-head').textContent = '"수분 증발 저감률 42.8%가 증명하는 피부 방패막"';
+          document.getElementById('modal-report-eco-head').textContent = '"해양 생태계를 존중하는 무해한 바다의 선물"';
+        } else if (caseType === 'mycelium-leather') {
+          document.getElementById('modal-report-title').textContent = '버섯 균사체 바이오 비건 레더 슬리브';
+          document.getElementById('modal-report-category').textContent = '패션 · 모바일 악세서리';
+          document.getElementById('modal-report-raw').textContent = '농업 부산물 배지 상에서 배양된 균사체의 키틴-베타글루칸 복합 나노네트워크 바이오 시트. 인장강도 24.3 MPa, 32% 경량화';
+          document.getElementById('modal-report-emo-head').textContent = '"숲의 고요한 대지가 빚어낸 무결점의 실루엣"';
+          document.getElementById('modal-report-eff-head').textContent = '"천연 가죽보다 32% 가볍고 찢김에 강한 나노 기술"';
+          document.getElementById('modal-report-eco-head').textContent = '"탄소 배출 90% 절감, 톱밥을 먹고 자란 순환 소재"';
+        } else if (caseType === 'cellulose-sponge') {
+          document.getElementById('modal-report-title').textContent = '식물성 셀룰로오스 다공체 스펀지';
+          document.getElementById('modal-report-category').textContent = '바스 · 제로웨이스트';
+          document.getElementById('modal-report-raw').textContent = 'FSC 인증 목재 펄프를 알칼리 셀룰로오스화하여 형성된 재생 셀룰로오스 다공성 스펀지. 기공 크기 180μm, 흡수량 22배';
+          document.getElementById('modal-report-emo-head').textContent = '"물에 닿는 순간 피어나는 구름 같은 아침 세안"';
+          document.getElementById('modal-report-eff-head').textContent = '"자기 무게의 22배를 빨아들이는 초미세 흡착 기공"';
+          document.getElementById('modal-report-eco-head').textContent = '"욕실 하수구로 흘러가는 미세플라스틱 0%의 확신"';
+        }
+      }
+
+      function setFormTone(tone) {
+        ['all', 'emotional', 'efficacy', 'eco'].forEach((t) => {
+          const btn = document.getElementById(`btn-tone-${t}`);
+          if (t === tone) {
+            btn.className = 'p-2.5 rounded-xl border border-[#292F22] bg-[#292F22] text-white font-semibold text-center cursor-pointer';
+          } else {
+            btn.className = 'p-2.5 rounded-xl border border-[#DDD5C2] bg-white text-[#4A513E] hover:bg-[#F3EDE2] text-center cursor-pointer';
+          }
+        });
+      }
+
+      function handleFormSubmit(e) {
+        e.preventDefault();
+        const company = document.getElementById('form-company').value;
+        const category = document.getElementById('form-category').value;
+        const spec = document.getElementById('form-spec').value;
+
+        // Update preview report with submitted info
+        document.getElementById('modal-report-company').textContent = company;
+        document.getElementById('modal-report-category').textContent = category;
+        document.getElementById('modal-report-raw').textContent = spec;
+
+        // Switch to success view
+        document.getElementById('form-container').classList.add('hidden');
+        document.getElementById('form-success').classList.remove('hidden');
+        lucide.createIcons();
+      }
+
+      // Template comparison modal
+      function openTemplateModal() {
+        const modal = document.getElementById('template-modal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+
+      function closeTemplateModal() {
+        const modal = document.getElementById('template-modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    </script>
+  </body>
+</html>
